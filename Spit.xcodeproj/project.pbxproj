@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05A2E79E736B42D1CEB9006F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F5C21183058E1D8515FDA9 /* Config.swift */; };
+		0935020A58BCF5B6807226B4 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C44A9F76A7A78F59508A3A /* EmptyStateView.swift */; };
+		0DCADF1441D0ECCCC565D7AA /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97566E58F5DCBDCA484FC495 /* Memo.swift */; };
+		0DFA28356215E6C828063D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */; };
+		1CB29C6AF23179F4DDBFD605 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5942991685AF3351B35D56 /* AudioRecorder.swift */; };
+		1E5E2D0BD4196C533B7FD8B4 /* SpitWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */; };
+		21F653C0F8C650B70CE288B8 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FE5058217D1D29606A124 /* MemoCell.swift */; };
+		22AADD616B4F665C255C1643 /* ThreadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE41ABAC4DACDEBB973F4AC /* ThreadItem.swift */; };
+		252955C70AAAD84F2635C558 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE66323B4A007F1A387DB69 /* MemoDetailViewModel.swift */; };
+		45F7CFCCB5EBDB33D2E1D628 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4934FE85D1EE5B46BA76F /* RecordButton.swift */; };
+		5EF6FD40FE0A1689968BAC1F /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E664A8187746F33F177B103 /* MemoDetailView.swift */; };
+		6655D013AF1E292EFCC78CCE /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285F0D6BCB86D04ABBF698A /* InputBar.swift */; };
+		6E5F116B68D7264B4A53C94D /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E78825CCDF6F2E8A4AC779 /* RecordingViewModel.swift */; };
+		76F10E5DB5633EB37668B058 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151BCBC030CF77B4418F6F2 /* HapticManager.swift */; };
+		890C7A0D394F328817FF81C6 /* SpitWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8CA2234BA82854E1C4CCCCD5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876558CD72BC41BE8EB7E51 /* OnboardingView.swift */; };
+		8E674193521767E2CCA7F1D9 /* SpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D345F451191C1E79895BB0 /* SpitApp.swift */; };
+		98E73EB4453E4F5FAD90221D /* WhisperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC98266E51D6D5B11B9B36 /* WhisperService.swift */; };
+		B3C6B9D4C5B4E2769178C303 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614F86EA41A2D08018FAC74 /* AudioPlayer.swift */; };
+		BAC545046F0E92884CEBFEDF /* SpitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */; };
+		BB0EAFAF2C5EB707C360692D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428E36A284BC42B544EB8488 /* HomeView.swift */; };
+		C810B1E18930A4F9AFC92886 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72308E3175F332D4550D638 /* WaveformView.swift */; };
+		CB92DDD661BEA1655BA8ADA1 /* ThreadBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B09359EE2C4C0D0EFC21E9 /* ThreadBubble.swift */; };
+		E6F1A0FEE96D2F21B44E6352 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C8E06B5CA8B23980BC9CD7 /* Date+Extensions.swift */; };
+		F1F133C7A5BBE3127D38DD2E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61F57C3A2C945740E9CCB34 /* HomeViewModel.swift */; };
+		FA193BA8FBD63A6C4BB66DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB0945502B871B298C13092 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B7371FD2C467730F65B593CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4771537539EAC2F191168BB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CC2227E5E0E20032828B435;
+			remoteInfo = SpitWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		174D0A7F0367B23D424EC3A3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				890C7A0D394F328817FF81C6 /* SpitWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0EF4934FE85D1EE5B46BA76F /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		12B09359EE2C4C0D0EFC21E9 /* ThreadBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadBubble.swift; sourceTree = "<group>"; };
+		1876558CD72BC41BE8EB7E51 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2151BCBC030CF77B4418F6F2 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		2285F0D6BCB86D04ABBF698A /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
+		2614F86EA41A2D08018FAC74 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		2B192477DE76833A15F3A29C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitWidgetBundle.swift; sourceTree = "<group>"; };
+		37D345F451191C1E79895BB0 /* SpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitApp.swift; sourceTree = "<group>"; };
+		3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SpitWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BB95A8CB6E6915A68EE321 /* Spit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spit.entitlements; sourceTree = "<group>"; };
+		428E36A284BC42B544EB8488 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		42E78825CCDF6F2E8A4AC779 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
+		4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E664A8187746F33F177B103 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
+		52C44A9F76A7A78F59508A3A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		66F18DFF4088AA971C8FC45C /* SpitWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpitWidget.entitlements; sourceTree = "<group>"; };
+		6EE41ABAC4DACDEBB973F4AC /* ThreadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadItem.swift; sourceTree = "<group>"; };
+		89F5C21183058E1D8515FDA9 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		8C5942991685AF3351B35D56 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		906FE5058217D1D29606A124 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
+		91FC98266E51D6D5B11B9B36 /* WhisperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperService.swift; sourceTree = "<group>"; };
+		97566E58F5DCBDCA484FC495 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		B72308E3175F332D4550D638 /* WaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+		C61F57C3A2C945740E9CCB34 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CDE66323B4A007F1A387DB69 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
+		CEB0945502B871B298C13092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3C8E06B5CA8B23980BC9CD7 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		E9D873160E1D4B9ACFC07C5B /* Spit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Spit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitWidget.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06F10028212D397B387F378B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				89F5C21183058E1D8515FDA9 /* Config.swift */,
+				37D345F451191C1E79895BB0 /* SpitApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		188F566CD1E6DBB3586B4CC5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E3C8E06B5CA8B23980BC9CD7 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3410D9E9E7FD2DBF7B6A8BFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9D873160E1D4B9ACFC07C5B /* Spit.app */,
+				3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51E2D3D251F2206E6A70E40B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBF54239B00C1CE0117D820D /* Components */,
+				F4D82C8A79B8685192D0B91F /* Detail */,
+				EF4075C13F0DE3496B6E146A /* Home */,
+				785484C2BA60C569C4F50FE6 /* Onboarding */,
+				CD73101BFF7E0272404E6301 /* Recording */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56DCE6FD523067BFBCEB6406 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97566E58F5DCBDCA484FC495 /* Memo.swift */,
+				6EE41ABAC4DACDEBB973F4AC /* ThreadItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		59885CF86CD490AD31D2C6CB /* SpitWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */,
+				2B192477DE76833A15F3A29C /* Info.plist */,
+				66F18DFF4088AA971C8FC45C /* SpitWidget.entitlements */,
+				F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */,
+				3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */,
+			);
+			path = SpitWidget;
+			sourceTree = "<group>";
+		};
+		5F39146440190BBD2EFBD203 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C61F57C3A2C945740E9CCB34 /* HomeViewModel.swift */,
+				CDE66323B4A007F1A387DB69 /* MemoDetailViewModel.swift */,
+				42E78825CCDF6F2E8A4AC779 /* RecordingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		785484C2BA60C569C4F50FE6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1876558CD72BC41BE8EB7E51 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B5B237208D9CD2252B2674E5 /* Spit */ = {
+			isa = PBXGroup;
+			children = (
+				06F10028212D397B387F378B /* App */,
+				188F566CD1E6DBB3586B4CC5 /* Extensions */,
+				56DCE6FD523067BFBCEB6406 /* Models */,
+				D86733088E2DB1FE5AD91FF2 /* Resources */,
+				C2220AB2B84772CD05BB43F9 /* Services */,
+				5F39146440190BBD2EFBD203 /* ViewModels */,
+				51E2D3D251F2206E6A70E40B /* Views */,
+			);
+			path = Spit;
+			sourceTree = "<group>";
+		};
+		BBF54239B00C1CE0117D820D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C2220AB2B84772CD05BB43F9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2614F86EA41A2D08018FAC74 /* AudioPlayer.swift */,
+				8C5942991685AF3351B35D56 /* AudioRecorder.swift */,
+				2151BCBC030CF77B4418F6F2 /* HapticManager.swift */,
+				91FC98266E51D6D5B11B9B36 /* WhisperService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CD73101BFF7E0272404E6301 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				0EF4934FE85D1EE5B46BA76F /* RecordButton.swift */,
+				B72308E3175F332D4550D638 /* WaveformView.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		D86733088E2DB1FE5AD91FF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEB0945502B871B298C13092 /* Assets.xcassets */,
+				40BB95A8CB6E6915A68EE321 /* Spit.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EF4075C13F0DE3496B6E146A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52C44A9F76A7A78F59508A3A /* EmptyStateView.swift */,
+				428E36A284BC42B544EB8488 /* HomeView.swift */,
+				906FE5058217D1D29606A124 /* MemoCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F4D82C8A79B8685192D0B91F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2285F0D6BCB86D04ABBF698A /* InputBar.swift */,
+				4E664A8187746F33F177B103 /* MemoDetailView.swift */,
+				12B09359EE2C4C0D0EFC21E9 /* ThreadBubble.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FD640B78F917FB5D26005A72 = {
+			isa = PBXGroup;
+			children = (
+				B5B237208D9CD2252B2674E5 /* Spit */,
+				59885CF86CD490AD31D2C6CB /* SpitWidget */,
+				3410D9E9E7FD2DBF7B6A8BFE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CC2227E5E0E20032828B435 /* SpitWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "SpitWidget" */;
+			buildPhases = (
+				27AD9453D7668CB7772A9D02 /* Sources */,
+				CF9EB38CDFA74CDA3A72E2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpitWidget;
+			packageProductDependencies = (
+			);
+			productName = SpitWidget;
+			productReference = 3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EA0B53ED5C0AA2468D687C8E /* Spit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Spit" */;
+			buildPhases = (
+				17544821E89FEBF3FDBA4D60 /* Sources */,
+				725F9F5ABB3AC0FD458FACFD /* Resources */,
+				174D0A7F0367B23D424EC3A3 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36F9AC4F6F228540B51B872E /* PBXTargetDependency */,
+			);
+			name = Spit;
+			packageProductDependencies = (
+			);
+			productName = Spit;
+			productReference = E9D873160E1D4B9ACFC07C5B /* Spit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4771537539EAC2F191168BB4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					4CC2227E5E0E20032828B435 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					EA0B53ED5C0AA2468D687C8E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Spit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FD640B78F917FB5D26005A72;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA0B53ED5C0AA2468D687C8E /* Spit */,
+				4CC2227E5E0E20032828B435 /* SpitWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		725F9F5ABB3AC0FD458FACFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA193BA8FBD63A6C4BB66DFB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF9EB38CDFA74CDA3A72E2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DFA28356215E6C828063D30 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17544821E89FEBF3FDBA4D60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3C6B9D4C5B4E2769178C303 /* AudioPlayer.swift in Sources */,
+				1CB29C6AF23179F4DDBFD605 /* AudioRecorder.swift in Sources */,
+				05A2E79E736B42D1CEB9006F /* Config.swift in Sources */,
+				E6F1A0FEE96D2F21B44E6352 /* Date+Extensions.swift in Sources */,
+				0935020A58BCF5B6807226B4 /* EmptyStateView.swift in Sources */,
+				76F10E5DB5633EB37668B058 /* HapticManager.swift in Sources */,
+				BB0EAFAF2C5EB707C360692D /* HomeView.swift in Sources */,
+				F1F133C7A5BBE3127D38DD2E /* HomeViewModel.swift in Sources */,
+				6655D013AF1E292EFCC78CCE /* InputBar.swift in Sources */,
+				0DCADF1441D0ECCCC565D7AA /* Memo.swift in Sources */,
+				21F653C0F8C650B70CE288B8 /* MemoCell.swift in Sources */,
+				5EF6FD40FE0A1689968BAC1F /* MemoDetailView.swift in Sources */,
+				252955C70AAAD84F2635C558 /* MemoDetailViewModel.swift in Sources */,
+				8CA2234BA82854E1C4CCCCD5 /* OnboardingView.swift in Sources */,
+				45F7CFCCB5EBDB33D2E1D628 /* RecordButton.swift in Sources */,
+				6E5F116B68D7264B4A53C94D /* RecordingViewModel.swift in Sources */,
+				8E674193521767E2CCA7F1D9 /* SpitApp.swift in Sources */,
+				CB92DDD661BEA1655BA8ADA1 /* ThreadBubble.swift in Sources */,
+				22AADD616B4F665C255C1643 /* ThreadItem.swift in Sources */,
+				C810B1E18930A4F9AFC92886 /* WaveformView.swift in Sources */,
+				98E73EB4453E4F5FAD90221D /* WhisperService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27AD9453D7668CB7772A9D02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC545046F0E92884CEBFEDF /* SpitWidget.swift in Sources */,
+				1E5E2D0BD4196C533B7FD8B4 /* SpitWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36F9AC4F6F228540B51B872E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CC2227E5E0E20032828B435 /* SpitWidget */;
+			targetProxy = B7371FD2C467730F65B593CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E633887D402ABD1F8A99E3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SpitWidget/SpitWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpitWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28F1F1790B31C36EF2CF51E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		70B68E23E62A65CACA7910E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spit/Resources/Spit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Spit needs microphone access to record voice memos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C826EC7D49048D8D7BE84B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		B5D8700A1CC3EAB8105D1C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SpitWidget/SpitWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpitWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DFC9BACAA0B66B64F6E10A97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spit/Resources/Spit.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Spit needs microphone access to record voice memos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Spit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C826EC7D49048D8D7BE84B8 /* Debug */,
+				28F1F1790B31C36EF2CF51E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "SpitWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E633887D402ABD1F8A99E3A /* Debug */,
+				B5D8700A1CC3EAB8105D1C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Spit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70B68E23E62A65CACA7910E9 /* Debug */,
+				DFC9BACAA0B66B64F6E10A97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4771537539EAC2F191168BB4 /* Project object */;
+}
