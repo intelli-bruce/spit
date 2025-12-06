@@ -5,10 +5,16 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Memo.createdAt, order: .reverse) private var memos: [Memo]
 
+    @Binding var shouldStartRecording: Bool
+
     @State private var viewModel = HomeViewModel()
     @State private var recordingViewModel = RecordingViewModel()
     @State private var selectedMemo: Memo?
     @State private var showPermissionAlert = false
+
+    init(shouldStartRecording: Binding<Bool> = .constant(false)) {
+        _shouldStartRecording = shouldStartRecording
+    }
 
     var body: some View {
         NavigationStack {
@@ -39,6 +45,16 @@ struct HomeView: View {
                 }
             }
             .animation(.easeInOut, value: viewModel.showUndoToast)
+            .onChange(of: shouldStartRecording) { _, newValue in
+                if newValue {
+                    startRecordingFromWidget()
+                }
+            }
+            .onAppear {
+                if shouldStartRecording {
+                    startRecordingFromWidget()
+                }
+            }
         }
         .alert("마이크 권한 필요", isPresented: $showPermissionAlert) {
             Button("설정으로 이동") {
@@ -85,14 +101,41 @@ struct HomeView: View {
             .font(.subheadline.weight(.semibold))
         }
         .padding()
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .glassEffect()
         .padding(.horizontal)
     }
 
     private func handleRecordingComplete(_ memo: Memo) {
         Task {
             await viewModel.processSTT(for: memo, context: modelContext)
+        }
+    }
+
+    private func startRecordingFromWidget() {
+        shouldStartRecording = false
+
+        guard !recordingViewModel.isRecording else { return }
+
+        Task {
+            if recordingViewModel.checkPermission() {
+                // 약간의 딜레이를 주어 UI가 준비된 후 녹음 시작
+                try? await Task.sleep(nanoseconds: 300_000_000)
+                await MainActor.run {
+                    recordingViewModel.startRecording()
+                }
+            } else {
+                let granted = await recordingViewModel.requestPermission()
+                if granted {
+                    try? await Task.sleep(nanoseconds: 300_000_000)
+                    await MainActor.run {
+                        recordingViewModel.startRecording()
+                    }
+                } else {
+                    await MainActor.run {
+                        showPermissionAlert = true
+                    }
+                }
+            }
         }
     }
 }

@@ -22,7 +22,6 @@ struct RecordButton: View {
                     Circle()
                         .fill(viewModel.isRecording ? Color.red : Color.accentColor)
                         .frame(width: 72, height: 72)
-                        .shadow(color: .black.opacity(0.2), radius: 8, y: 4)
 
                     if viewModel.isRecording {
                         RoundedRectangle(cornerRadius: 6)
@@ -34,6 +33,8 @@ struct RecordButton: View {
                             .foregroundStyle(.white)
                     }
                 }
+                .glassEffect(.regular.tint(viewModel.isRecording ? .red : .accentColor))
+                .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
             }
             .buttonStyle(.plain)
             .accessibilityLabel(viewModel.isRecording ? "녹음 중지" : "녹음 시작")
@@ -61,8 +62,7 @@ struct RecordButton: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .glassEffect()
         .transition(.scale.combined(with: .opacity))
     }
 

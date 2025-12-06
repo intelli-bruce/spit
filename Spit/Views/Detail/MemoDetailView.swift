@@ -26,8 +26,6 @@ struct MemoDetailView: View {
                 }
             }
 
-            Divider()
-
             InputBar(viewModel: viewModel, memo: memo)
         }
         .navigationTitle("")
@@ -55,10 +53,7 @@ struct MemoDetailView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
-        .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemGray6))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private var audioPlayerView: some View {
@@ -86,14 +81,10 @@ struct MemoDetailView: View {
                     .font(.caption.weight(.medium))
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
-                    .background(Color(.systemGray5))
-                    .clipShape(Capsule())
+                    .background(.ultraThinMaterial, in: Capsule())
             }
             .buttonStyle(.plain)
         }
-        .padding()
-        .background(Color(.systemGray5))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
     private var retryButton: some View {
@@ -118,9 +109,10 @@ struct MemoDetailView: View {
     }
 
     private var threadSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 0) {
             ForEach(memo.threads.sorted(by: { $0.createdAt < $1.createdAt })) { thread in
                 ThreadBubble(thread: thread, viewModel: viewModel)
+                    .padding(.vertical, 8)
                     .contextMenu {
                         Button(role: .destructive) {
                             viewModel.deleteThread(thread, from: memo, context: modelContext)
@@ -134,6 +126,7 @@ struct MemoDetailView: View {
                 .frame(height: 1)
                 .id("bottom")
         }
+        .padding(.top, 8)
     }
 }
 

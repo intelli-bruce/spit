@@ -42,6 +42,7 @@ struct SpitWidgetEntryView: View {
             Image(systemName: "mic.fill")
                 .font(.title2)
         }
+        .widgetURL(URL(string: "spit://record"))
     }
 
     private var smallWidgetView: some View {
@@ -59,6 +60,7 @@ struct SpitWidgetEntryView: View {
                     .foregroundStyle(.white)
             }
         }
+        .widgetURL(URL(string: "spit://record"))
     }
 }
 

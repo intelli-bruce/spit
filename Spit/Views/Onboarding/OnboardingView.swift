@@ -49,6 +49,8 @@ struct OnboardingView: View {
                 .font(.system(size: 80))
                 .foregroundStyle(Color.accentColor)
                 .symbolEffect(.pulse)
+                .padding(30)
+                .glassEffect(.regular.tint(.accentColor))
 
             VStack(spacing: 12) {
                 Text("Spit")
@@ -76,6 +78,8 @@ struct OnboardingView: View {
             Image(systemName: "mic.circle.fill")
                 .font(.system(size: 80))
                 .foregroundStyle(Color.accentColor)
+                .padding(30)
+                .glassEffect(.regular.tint(.accentColor))
 
             VStack(spacing: 12) {
                 Text("마이크 권한")
@@ -92,6 +96,8 @@ struct OnboardingView: View {
                 featureRow(icon: "waveform", text: "텍스트 변환만을 위해 사용됩니다")
                 featureRow(icon: "hand.raised", text: "언제든 설정에서 변경 가능합니다")
             }
+            .padding()
+            .glassEffect()
             .padding(.top, 20)
 
             Spacer()
@@ -131,8 +137,7 @@ struct OnboardingView: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(Color.accentColor)
-                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .glassEffect(.regular.tint(.accentColor))
         }
     }
 

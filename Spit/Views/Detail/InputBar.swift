@@ -9,7 +9,7 @@ struct InputBar: View {
     @FocusState private var isTextFieldFocused: Bool
 
     var body: some View {
-        HStack(spacing: 12) {
+        VStack(spacing: 0) {
             if viewModel.isRecordingThread {
                 recordingView
             } else {
@@ -17,12 +17,12 @@ struct InputBar: View {
             }
         }
         .padding(.horizontal)
-        .padding(.vertical, 8)
-        .background(Color(.systemBackground))
+        .padding(.vertical, 12)
+        .background(.ultraThinMaterial)
     }
 
     private var textInputView: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 16) {
             TextField("메모 추가...", text: $viewModel.textInput, axis: .vertical)
                 .textFieldStyle(.plain)
                 .lineLimit(1...4)
@@ -36,47 +36,79 @@ struct InputBar: View {
                 Button {
                     startRecording()
                 } label: {
-                    Image(systemName: "mic.circle.fill")
-                        .font(.title)
-                        .foregroundStyle(Color.accentColor)
+                    ZStack {
+                        Circle()
+                            .fill(Color.accentColor)
+                            .frame(width: 56, height: 56)
+
+                        Image(systemName: "mic.fill")
+                            .font(.title2)
+                            .foregroundStyle(.white)
+                    }
+                    .glassEffect(.regular.tint(.accentColor))
                 }
             } else {
                 Button {
                     sendTextMessage()
                 } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.title)
-                        .foregroundStyle(Color.accentColor)
+                    ZStack {
+                        Circle()
+                            .fill(Color.accentColor)
+                            .frame(width: 56, height: 56)
+
+                        Image(systemName: "arrow.up")
+                            .font(.title2.weight(.semibold))
+                            .foregroundStyle(.white)
+                    }
+                    .glassEffect(.regular.tint(.accentColor))
                 }
             }
         }
     }
 
     private var recordingView: some View {
-        HStack(spacing: 12) {
-            Button {
-                viewModel.cancelRecordingThread()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .font(.title2)
+        VStack(spacing: 12) {
+            HStack(spacing: 12) {
+                WaveformView(levels: viewModel.audioRecorder.audioLevels)
+                    .frame(height: 40)
+
+                Text(viewModel.formattedRecordingTime)
+                    .font(.system(.title3, design: .monospaced))
                     .foregroundStyle(.secondary)
             }
 
-            WaveformView(levels: viewModel.audioRecorder.audioLevels)
-                .frame(height: 30)
+            HStack(spacing: 24) {
+                Button {
+                    viewModel.cancelRecordingThread()
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(Color.secondary.opacity(0.2))
+                            .frame(width: 56, height: 56)
 
-            Text(viewModel.formattedRecordingTime)
-                .font(.subheadline.monospacedDigit())
-                .foregroundStyle(.secondary)
+                        Image(systemName: "xmark")
+                            .font(.title2.weight(.medium))
+                            .foregroundStyle(.secondary)
+                    }
+                }
 
-            Button {
-                stopRecording()
-            } label: {
-                Image(systemName: "stop.circle.fill")
-                    .font(.title)
-                    .foregroundStyle(.red)
+                Button {
+                    stopRecording()
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 56, height: 56)
+
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(.white)
+                            .frame(width: 20, height: 20)
+                    }
+                    .glassEffect(.regular.tint(.red))
+                }
             }
         }
+        .padding(.vertical, 8)
     }
 
     private func sendTextMessage() {

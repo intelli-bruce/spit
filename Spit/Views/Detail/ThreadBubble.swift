@@ -7,26 +7,25 @@ struct ThreadBubble: View {
     @State private var localPlayer = AudioPlayer()
 
     var body: some View {
-        HStack {
-            Spacer()
+        HStack(alignment: .top, spacing: 12) {
+            // Vertical connecting line
+            Rectangle()
+                .fill(Color.secondary.opacity(0.3))
+                .frame(width: 2)
+                .padding(.leading, 4)
 
-            VStack(alignment: .trailing, spacing: 4) {
-                Group {
-                    if thread.type == .audio {
-                        audioContent
-                    } else {
-                        textContent
-                    }
+            VStack(alignment: .leading, spacing: 6) {
+                if thread.type == .audio {
+                    audioContent
+                } else {
+                    textContent
                 }
-                .padding(12)
-                .background(Color.accentColor.opacity(0.15))
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 
                 Text(thread.createdAt.relativeTimeString)
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }
-            .frame(maxWidth: 280, alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
