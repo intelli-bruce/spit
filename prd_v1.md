@@ -1,4 +1,4 @@
-# PRD Artifact — Spit (iOS)
+# PRD Artifact — Drops (iOS)
 
 > "생각을 떠올리는 즉시 뱉어내는 음성 메모 앱"
 
@@ -8,7 +8,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| 제품명 | Spit |
+| 제품명 | Drops |
 | 플랫폼 | iOS 17.0+ |
 | 핵심 가치 | 가장 빠른 음성 기반 메모 생성 |
 | 핵심 기술 | OpenAI Whisper STT (Speech API) |
@@ -75,7 +75,7 @@
 ## 5. Screens & IA (Information Architecture)
 
 ```
-Spit App
+Drops App
  ├─ Home (Memo List)
  │    ├─ Memo Cells
  │    └─ Bottom Record Button
@@ -185,7 +185,7 @@ language: ko (optional, auto-detect 가능)
 **Lock Screen Widget**
 
 - 단일 아이콘형 (accessoryCircular)
-- 탭 → Spit 실행 → 홈 화면
+- 탭 → Drops 실행 → 홈 화면
 
 **Home Screen Widget**
 
@@ -223,8 +223,8 @@ language: ko (optional, auto-detect 가능)
 
 **Siri 지원 문구 (예시):**
 
-- "Spit으로 메모해"
-- "Spit 녹음 시작"
+- "Drops으로 메모해"
+- "Drops 녹음 시작"
 
 ---
 

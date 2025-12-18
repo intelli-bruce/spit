@@ -1,9 +1,9 @@
-좋아. 아래는 **“PRD 아티팩트 형식”**으로 재구성한 Spit(iOS) PRD야.
+좋아. 아래는 **“PRD 아티팩트 형식”**으로 재구성한 Drops(iOS) PRD야.
 Notion / Google Docs / Confluence / GitHub Repo 어디에도 바로 붙여넣기 좋은 섹션형 구조 + 테이블 + 간결한 체크리스트 + 명확한 요구사항 포맷으로 재정리했어.
 
 ⸻
 
-📦 PRD Artifact — Spit (iOS)
+📦 PRD Artifact — Drops (iOS)
 
 “생각을 떠올리는 즉시 뱉어내는 음성 메모 앱”
 
@@ -12,7 +12,7 @@ Notion / Google Docs / Confluence / GitHub Repo 어디에도 바로 붙여넣기
 📌 1. Product Overview
 
 항목 내용
-제품명 Spit
+제품명 Drops
 플랫폼 iOS
 핵심 가치 가장 빠른 음성 기반 메모 생성
 핵심 기술 OpenAI Whisper STT (Speech API)
@@ -58,7 +58,7 @@ Notion / Google Docs / Confluence / GitHub Repo 어디에도 바로 붙여넣기
 
 📱 4. Screens & IA (Information Architecture)
 
-Spit App
+Drops App
  ├─ Home (Memo List)
  │    ├─ Memo Cells
  │    └─ Bottom Record Button
@@ -147,7 +147,7 @@ response_format: json
 
 Lock Screen Widget
  • 단일 아이콘형
- • 탭 → Spit 실행 → 홈 화면 → 녹음 버튼 제공
+ • 탭 → Drops 실행 → 홈 화면 → 녹음 버튼 제공
 
 Home Screen Widget
  • 단일 아이콘형
