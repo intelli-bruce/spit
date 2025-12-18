@@ -33,7 +33,7 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 }
             }
-            .navigationTitle("Spit")
+            .navigationTitle("Drops")
             .navigationDestination(item: $selectedMemo) { memo in
                 MemoDetailView(memo: memo)
             }

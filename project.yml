@@ -1,4 +1,4 @@
-name: Spit
+name: Drops
 options:
   bundleIdPrefix: com.intellieffect
   deploymentTarget:
@@ -13,23 +13,23 @@ settings:
     CODE_SIGN_STYLE: Automatic
 
 targets:
-  Spit:
+  Drops:
     type: application
     platform: iOS
     sources:
-      - path: Spit
+      - path: Drops
         excludes:
           - "**/.DS_Store"
     info:
-      path: Spit/Resources/Info.plist
+      path: Drops/Resources/Info.plist
       properties:
         CFBundleURLTypes:
-          - CFBundleURLName: com.intellieffect.spit
+          - CFBundleURLName: com.intellieffect.drops
             CFBundleURLSchemes:
-              - spit
+              - drops
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.spit
+        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: true
         MARKETING_VERSION: "1.0.0"
@@ -38,45 +38,45 @@ targets:
         INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: true
         INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Spit needs microphone access to record voice memos."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Drops needs microphone access to record voice memos."
         SUPPORTS_MACCATALYST: false
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: false
     entitlements:
-      path: Spit/Resources/Spit.entitlements
+      path: Drops/Resources/Drops.entitlements
       properties:
         com.apple.security.app-sandbox: true
     dependencies:
-      - target: SpitWidget
+      - target: DropsWidget
         embed: true
 
-  SpitWidget:
+  DropsWidget:
     type: app-extension
     platform: iOS
     sources:
-      - path: SpitWidget
+      - path: DropsWidget
         excludes:
           - "**/.DS_Store"
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.spit.widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops.widget
         GENERATE_INFOPLIST_FILE: true
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
         SKIP_INSTALL: true
         ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
     entitlements:
-      path: SpitWidget/SpitWidget.entitlements
+      path: DropsWidget/DropsWidget.entitlements
       properties:
         com.apple.security.app-sandbox: true
         com.apple.security.application-groups:
-          - group.com.intellieffect.spit
+          - group.com.intellieffect.drops
 
 schemes:
-  Spit:
+  Drops:
     build:
       targets:
-        Spit: all
-        SpitWidget: all
+        Drops: all
+        DropsWidget: all
     run:
       config: Debug
     test:

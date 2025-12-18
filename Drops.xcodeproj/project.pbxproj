@@ -12,7 +12,7 @@
 		0DCADF1441D0ECCCC565D7AA /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97566E58F5DCBDCA484FC495 /* Memo.swift */; };
 		0DFA28356215E6C828063D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */; };
 		1CB29C6AF23179F4DDBFD605 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5942991685AF3351B35D56 /* AudioRecorder.swift */; };
-		1E5E2D0BD4196C533B7FD8B4 /* SpitWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */; };
+		1E5E2D0BD4196C533B7FD8B4 /* DropsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3166BE0355707F5F52D2C42C /* DropsWidgetBundle.swift */; };
 		21F653C0F8C650B70CE288B8 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FE5058217D1D29606A124 /* MemoCell.swift */; };
 		22AADD616B4F665C255C1643 /* ThreadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE41ABAC4DACDEBB973F4AC /* ThreadItem.swift */; };
 		23E018D3908B319F01EB7C26 /* Secrets.swift.template in Resources */ = {isa = PBXBuildFile; fileRef = 163A1A20EE0863E350FA0A24 /* Secrets.swift.template */; };
@@ -23,12 +23,12 @@
 		6655D013AF1E292EFCC78CCE /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285F0D6BCB86D04ABBF698A /* InputBar.swift */; };
 		6E5F116B68D7264B4A53C94D /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E78825CCDF6F2E8A4AC779 /* RecordingViewModel.swift */; };
 		76F10E5DB5633EB37668B058 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151BCBC030CF77B4418F6F2 /* HapticManager.swift */; };
-		890C7A0D394F328817FF81C6 /* SpitWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		890C7A0D394F328817FF81C6 /* DropsWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E219B30741E17AEC61CC0B5 /* DropsWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8CA2234BA82854E1C4CCCCD5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876558CD72BC41BE8EB7E51 /* OnboardingView.swift */; };
-		8E674193521767E2CCA7F1D9 /* SpitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D345F451191C1E79895BB0 /* SpitApp.swift */; };
+		8E674193521767E2CCA7F1D9 /* DropsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D345F451191C1E79895BB0 /* DropsApp.swift */; };
 		98E73EB4453E4F5FAD90221D /* WhisperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC98266E51D6D5B11B9B36 /* WhisperService.swift */; };
 		B3C6B9D4C5B4E2769178C303 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614F86EA41A2D08018FAC74 /* AudioPlayer.swift */; };
-		BAC545046F0E92884CEBFEDF /* SpitWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */; };
+		BAC545046F0E92884CEBFEDF /* DropsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60BFD25C753FACC8EA21DF8 /* DropsWidget.swift */; };
 		BB0EAFAF2C5EB707C360692D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428E36A284BC42B544EB8488 /* HomeView.swift */; };
 		C810B1E18930A4F9AFC92886 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72308E3175F332D4550D638 /* WaveformView.swift */; };
 		CB92DDD661BEA1655BA8ADA1 /* ThreadBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B09359EE2C4C0D0EFC21E9 /* ThreadBubble.swift */; };
@@ -43,7 +43,7 @@
 			containerPortal = 4771537539EAC2F191168BB4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4CC2227E5E0E20032828B435;
-			remoteInfo = SpitWidget;
+			remoteInfo = DropsWidget;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -54,7 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				890C7A0D394F328817FF81C6 /* SpitWidget.appex in Embed Foundation Extensions */,
+				890C7A0D394F328817FF81C6 /* DropsWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,17 +70,17 @@
 		2285F0D6BCB86D04ABBF698A /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
 		2614F86EA41A2D08018FAC74 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		2B192477DE76833A15F3A29C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitWidgetBundle.swift; sourceTree = "<group>"; };
-		37D345F451191C1E79895BB0 /* SpitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitApp.swift; sourceTree = "<group>"; };
+		3166BE0355707F5F52D2C42C /* DropsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsWidgetBundle.swift; sourceTree = "<group>"; };
+		37D345F451191C1E79895BB0 /* DropsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsApp.swift; sourceTree = "<group>"; };
 		39C3A8D5C57689E4FB848173 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SpitWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		40BB95A8CB6E6915A68EE321 /* Spit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spit.entitlements; sourceTree = "<group>"; };
+		3E219B30741E17AEC61CC0B5 /* DropsWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DropsWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BB95A8CB6E6915A68EE321 /* Drops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drops.entitlements; sourceTree = "<group>"; };
 		428E36A284BC42B544EB8488 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		42E78825CCDF6F2E8A4AC779 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
 		4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E664A8187746F33F177B103 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
 		52C44A9F76A7A78F59508A3A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		66F18DFF4088AA971C8FC45C /* SpitWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpitWidget.entitlements; sourceTree = "<group>"; };
+		66F18DFF4088AA971C8FC45C /* DropsWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DropsWidget.entitlements; sourceTree = "<group>"; };
 		6864D4FCD818524F70D459B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6EE41ABAC4DACDEBB973F4AC /* ThreadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadItem.swift; sourceTree = "<group>"; };
 		89F5C21183058E1D8515FDA9 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		CDE66323B4A007F1A387DB69 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
 		CEB0945502B871B298C13092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3C8E06B5CA8B23980BC9CD7 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		E9D873160E1D4B9ACFC07C5B /* Spit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Spit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpitWidget.swift; sourceTree = "<group>"; };
+		E9D873160E1D4B9ACFC07C5B /* Drops.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Drops.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F60BFD25C753FACC8EA21DF8 /* DropsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -104,7 +104,7 @@
 				89F5C21183058E1D8515FDA9 /* Config.swift */,
 				39C3A8D5C57689E4FB848173 /* Secrets.swift */,
 				163A1A20EE0863E350FA0A24 /* Secrets.swift.template */,
-				37D345F451191C1E79895BB0 /* SpitApp.swift */,
+				37D345F451191C1E79895BB0 /* DropsApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -120,8 +120,8 @@
 		3410D9E9E7FD2DBF7B6A8BFE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9D873160E1D4B9ACFC07C5B /* Spit.app */,
-				3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */,
+				E9D873160E1D4B9ACFC07C5B /* Drops.app */,
+				3E219B30741E17AEC61CC0B5 /* DropsWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,16 +147,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		59885CF86CD490AD31D2C6CB /* SpitWidget */ = {
+		59885CF86CD490AD31D2C6CB /* DropsWidget */ = {
 			isa = PBXGroup;
 			children = (
 				4461FC8E2DDEC1BB8AB09FF2 /* Assets.xcassets */,
 				2B192477DE76833A15F3A29C /* Info.plist */,
-				66F18DFF4088AA971C8FC45C /* SpitWidget.entitlements */,
-				F60BFD25C753FACC8EA21DF8 /* SpitWidget.swift */,
-				3166BE0355707F5F52D2C42C /* SpitWidgetBundle.swift */,
+				66F18DFF4088AA971C8FC45C /* DropsWidget.entitlements */,
+				F60BFD25C753FACC8EA21DF8 /* DropsWidget.swift */,
+				3166BE0355707F5F52D2C42C /* DropsWidgetBundle.swift */,
 			);
-			path = SpitWidget;
+			path = DropsWidget;
 			sourceTree = "<group>";
 		};
 		5F39146440190BBD2EFBD203 /* ViewModels */ = {
@@ -177,7 +177,7 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		B5B237208D9CD2252B2674E5 /* Spit */ = {
+		B5B237208D9CD2252B2674E5 /* Drops */ = {
 			isa = PBXGroup;
 			children = (
 				06F10028212D397B387F378B /* App */,
@@ -188,7 +188,7 @@
 				5F39146440190BBD2EFBD203 /* ViewModels */,
 				51E2D3D251F2206E6A70E40B /* Views */,
 			);
-			path = Spit;
+			path = Drops;
 			sourceTree = "<group>";
 		};
 		BBF54239B00C1CE0117D820D /* Components */ = {
@@ -223,7 +223,7 @@
 			children = (
 				CEB0945502B871B298C13092 /* Assets.xcassets */,
 				6864D4FCD818524F70D459B5 /* Info.plist */,
-				40BB95A8CB6E6915A68EE321 /* Spit.entitlements */,
+				40BB95A8CB6E6915A68EE321 /* Drops.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -251,8 +251,8 @@
 		FD640B78F917FB5D26005A72 = {
 			isa = PBXGroup;
 			children = (
-				B5B237208D9CD2252B2674E5 /* Spit */,
-				59885CF86CD490AD31D2C6CB /* SpitWidget */,
+				B5B237208D9CD2252B2674E5 /* Drops */,
+				59885CF86CD490AD31D2C6CB /* DropsWidget */,
 				3410D9E9E7FD2DBF7B6A8BFE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -260,9 +260,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4CC2227E5E0E20032828B435 /* SpitWidget */ = {
+		4CC2227E5E0E20032828B435 /* DropsWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "SpitWidget" */;
+			buildConfigurationList = E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "DropsWidget" */;
 			buildPhases = (
 				27AD9453D7668CB7772A9D02 /* Sources */,
 				CF9EB38CDFA74CDA3A72E2ED /* Resources */,
@@ -271,16 +271,16 @@
 			);
 			dependencies = (
 			);
-			name = SpitWidget;
+			name = DropsWidget;
 			packageProductDependencies = (
 			);
-			productName = SpitWidget;
-			productReference = 3E219B30741E17AEC61CC0B5 /* SpitWidget.appex */;
+			productName = DropsWidget;
+			productReference = 3E219B30741E17AEC61CC0B5 /* DropsWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		EA0B53ED5C0AA2468D687C8E /* Spit */ = {
+		EA0B53ED5C0AA2468D687C8E /* Drops */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Spit" */;
+			buildConfigurationList = FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Drops" */;
 			buildPhases = (
 				17544821E89FEBF3FDBA4D60 /* Sources */,
 				725F9F5ABB3AC0FD458FACFD /* Resources */,
@@ -291,11 +291,11 @@
 			dependencies = (
 				36F9AC4F6F228540B51B872E /* PBXTargetDependency */,
 			);
-			name = Spit;
+			name = Drops;
 			packageProductDependencies = (
 			);
-			productName = Spit;
-			productReference = E9D873160E1D4B9ACFC07C5B /* Spit.app */;
+			productName = Drops;
+			productReference = E9D873160E1D4B9ACFC07C5B /* Drops.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -317,7 +317,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Spit" */;
+			buildConfigurationList = 5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Drops" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -331,8 +331,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA0B53ED5C0AA2468D687C8E /* Spit */,
-				4CC2227E5E0E20032828B435 /* SpitWidget */,
+				EA0B53ED5C0AA2468D687C8E /* Drops */,
+				4CC2227E5E0E20032828B435 /* DropsWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -379,7 +379,7 @@
 				45F7CFCCB5EBDB33D2E1D628 /* RecordButton.swift in Sources */,
 				6E5F116B68D7264B4A53C94D /* RecordingViewModel.swift in Sources */,
 				34D88EFE9606527162E7C6B4 /* Secrets.swift in Sources */,
-				8E674193521767E2CCA7F1D9 /* SpitApp.swift in Sources */,
+				8E674193521767E2CCA7F1D9 /* DropsApp.swift in Sources */,
 				CB92DDD661BEA1655BA8ADA1 /* ThreadBubble.swift in Sources */,
 				22AADD616B4F665C255C1643 /* ThreadItem.swift in Sources */,
 				C810B1E18930A4F9AFC92886 /* WaveformView.swift in Sources */,
@@ -391,8 +391,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAC545046F0E92884CEBFEDF /* SpitWidget.swift in Sources */,
-				1E5E2D0BD4196C533B7FD8B4 /* SpitWidgetBundle.swift in Sources */,
+				BAC545046F0E92884CEBFEDF /* DropsWidget.swift in Sources */,
+				1E5E2D0BD4196C533B7FD8B4 /* DropsWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +401,7 @@
 /* Begin PBXTargetDependency section */
 		36F9AC4F6F228540B51B872E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4CC2227E5E0E20032828B435 /* SpitWidget */;
+			target = 4CC2227E5E0E20032828B435 /* DropsWidget */;
 			targetProxy = B7371FD2C467730F65B593CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -411,17 +411,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = SpitWidget/SpitWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DropsWidget/DropsWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpitWidget/Info.plist;
+				INFOPLIST_FILE = DropsWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.widget;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -490,12 +490,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Spit/Resources/Spit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Drops/Resources/Drops.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Spit/Resources/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Spit needs microphone access to record voice memos.";
+				INFOPLIST_FILE = Drops/Resources/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Drops needs microphone access to record voice memos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -505,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -582,17 +582,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = SpitWidget/SpitWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DropsWidget/DropsWidget.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpitWidget/Info.plist;
+				INFOPLIST_FILE = DropsWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.widget;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,12 +603,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Spit/Resources/Spit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Drops/Resources/Drops.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Spit/Resources/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Spit needs microphone access to record voice memos.";
+				INFOPLIST_FILE = Drops/Resources/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Drops needs microphone access to record voice memos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -618,7 +618,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.spit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -629,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Spit" */ = {
+		5CB281F73D86D36749171BD9 /* Build configuration list for PBXProject "Drops" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C826EC7D49048D8D7BE84B8 /* Debug */,
@@ -638,7 +638,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "SpitWidget" */ = {
+		E564550A656DF63B1AFF3621 /* Build configuration list for PBXNativeTarget "DropsWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E633887D402ABD1F8A99E3A /* Debug */,
@@ -647,7 +647,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Spit" */ = {
+		FC34ECA65C7CA39659B3E347 /* Build configuration list for PBXNativeTarget "Drops" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				70B68E23E62A65CACA7910E9 /* Debug */,

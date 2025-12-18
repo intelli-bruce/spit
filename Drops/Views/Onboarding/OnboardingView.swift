@@ -53,7 +53,7 @@ struct OnboardingView: View {
                 .glassEffect(.regular.tint(.accentColor))
 
             VStack(spacing: 12) {
-                Text("Spit")
+                Text("Drops")
                     .font(.largeTitle.weight(.bold))
 
                 Text("생각을 뱉어내세요")

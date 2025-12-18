@@ -1,11 +1,11 @@
-# Spit iOS App Makefile
+# Drops iOS App Makefile
 
 DEVICE_ID = 00008150-000D15D02288401C
-BUNDLE_ID = com.intellieffect.spit
-SCHEME = Spit
-PROJECT = Spit.xcodeproj
-BUILD_DIR = $(HOME)/Library/Developer/Xcode/DerivedData/Spit-*/Build/Products/Debug-iphoneos
-APP_PATH = $(BUILD_DIR)/Spit.app
+BUNDLE_ID = com.intellieffect.drops
+SCHEME = Drops
+PROJECT = Drops.xcodeproj
+BUILD_DIR = $(HOME)/Library/Developer/Xcode/DerivedData/Drops-*/Build/Products/Debug-iphoneos
+APP_PATH = $(BUILD_DIR)/Drops.app
 
 .PHONY: generate build install run device simulator clean open
 
@@ -38,7 +38,7 @@ device: build install run
 # Clean build artifacts
 clean:
 	xcodebuild -project $(PROJECT) -scheme $(SCHEME) clean
-	rm -rf ~/Library/Developer/Xcode/DerivedData/Spit-*
+	rm -rf ~/Library/Developer/Xcode/DerivedData/Drops-*
 
 # Open in Xcode
 open:
@@ -46,7 +46,7 @@ open:
 
 # Show help
 help:
-	@echo "Spit iOS App Build Commands"
+	@echo "Drops iOS App Build Commands"
 	@echo ""
 	@echo "  make device     - Build, install, and run on connected iPhone"
 	@echo "  make build      - Build for connected device"

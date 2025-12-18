@@ -1,28 +1,28 @@
 import WidgetKit
 import SwiftUI
 
-struct SpitWidgetEntry: TimelineEntry {
+struct DropsWidgetEntry: TimelineEntry {
     let date: Date
 }
 
-struct SpitWidgetProvider: TimelineProvider {
-    func placeholder(in context: Context) -> SpitWidgetEntry {
-        SpitWidgetEntry(date: Date())
+struct DropsWidgetProvider: TimelineProvider {
+    func placeholder(in context: Context) -> DropsWidgetEntry {
+        DropsWidgetEntry(date: Date())
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SpitWidgetEntry) -> Void) {
-        completion(SpitWidgetEntry(date: Date()))
+    func getSnapshot(in context: Context, completion: @escaping (DropsWidgetEntry) -> Void) {
+        completion(DropsWidgetEntry(date: Date()))
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SpitWidgetEntry>) -> Void) {
-        let entry = SpitWidgetEntry(date: Date())
+    func getTimeline(in context: Context, completion: @escaping (Timeline<DropsWidgetEntry>) -> Void) {
+        let entry = DropsWidgetEntry(date: Date())
         let timeline = Timeline(entries: [entry], policy: .never)
         completion(timeline)
     }
 }
 
-struct SpitWidgetEntryView: View {
-    var entry: SpitWidgetProvider.Entry
+struct DropsWidgetEntryView: View {
+    var entry: DropsWidgetProvider.Entry
     @Environment(\.widgetFamily) var family
 
     var body: some View {
@@ -42,7 +42,7 @@ struct SpitWidgetEntryView: View {
             Image(systemName: "mic.fill")
                 .font(.title2)
         }
-        .widgetURL(URL(string: "spit://record"))
+        .widgetURL(URL(string: "drops://record"))
     }
 
     private var smallWidgetView: some View {
@@ -55,37 +55,37 @@ struct SpitWidgetEntryView: View {
                     .font(.largeTitle)
                     .foregroundStyle(.white)
 
-                Text("Spit")
+                Text("Drops")
                     .font(.headline)
                     .foregroundStyle(.white)
             }
         }
-        .widgetURL(URL(string: "spit://record"))
+        .widgetURL(URL(string: "drops://record"))
     }
 }
 
-struct SpitWidget: Widget {
-    let kind: String = "SpitWidget"
+struct DropsWidget: Widget {
+    let kind: String = "DropsWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: SpitWidgetProvider()) { entry in
-            SpitWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: DropsWidgetProvider()) { entry in
+            DropsWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("Spit")
+        .configurationDisplayName("Drops")
         .description("빠르게 음성 메모를 시작하세요")
         .supportedFamilies([.systemSmall, .accessoryCircular])
     }
 }
 
 #Preview(as: .systemSmall) {
-    SpitWidget()
+    DropsWidget()
 } timeline: {
-    SpitWidgetEntry(date: .now)
+    DropsWidgetEntry(date: .now)
 }
 
 #Preview(as: .accessoryCircular) {
-    SpitWidget()
+    DropsWidget()
 } timeline: {
-    SpitWidgetEntry(date: .now)
+    DropsWidgetEntry(date: .now)
 }

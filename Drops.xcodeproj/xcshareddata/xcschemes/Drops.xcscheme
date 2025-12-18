@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
-               BuildableName = "Spit.app"
-               BlueprintName = "Spit"
-               ReferencedContainer = "container:Spit.xcodeproj">
+               BuildableName = "Drops.app"
+               BlueprintName = "Drops"
+               ReferencedContainer = "container:Drops.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CC2227E5E0E20032828B435"
-               BuildableName = "SpitWidget.appex"
-               BlueprintName = "SpitWidget"
-               ReferencedContainer = "container:Spit.xcodeproj">
+               BuildableName = "DropsWidget.appex"
+               BlueprintName = "DropsWidget"
+               ReferencedContainer = "container:Drops.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
-            BuildableName = "Spit.app"
-            BlueprintName = "Spit"
-            ReferencedContainer = "container:Spit.xcodeproj">
+            BuildableName = "Drops.app"
+            BlueprintName = "Drops"
+            ReferencedContainer = "container:Drops.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
-            BuildableName = "Spit.app"
-            BlueprintName = "Spit"
-            ReferencedContainer = "container:Spit.xcodeproj">
+            BuildableName = "Drops.app"
+            BlueprintName = "Drops"
+            ReferencedContainer = "container:Drops.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -91,9 +91,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
-            BuildableName = "Spit.app"
-            BlueprintName = "Spit"
-            ReferencedContainer = "container:Spit.xcodeproj">
+            BuildableName = "Drops.app"
+            BlueprintName = "Drops"
+            ReferencedContainer = "container:Drops.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
