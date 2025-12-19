@@ -81,15 +81,12 @@ struct VimTextView: NSViewRepresentable {
                     return event
                 }
 
-                var handled = false
                 let vimEngine = self.parent.vimEngine
 
-                // Use MainActor to call vim engine
-                DispatchQueue.main.sync {
-                    handled = vimEngine.handleKeyDown(event)
-                    if handled {
-                        self.updateCursorStyle(for: vimEngine.mode)
-                    }
+                // Already on main thread, no need for dispatch
+                let handled = vimEngine.handleKeyDown(event)
+                if handled {
+                    self.updateCursorStyle(for: vimEngine.mode)
                 }
 
                 return handled ? nil : event

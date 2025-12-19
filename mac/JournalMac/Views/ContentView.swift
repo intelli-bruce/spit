@@ -8,6 +8,7 @@ struct ContentView: View {
         EditorView(
             content: $viewModel.content,
             hasUnsavedChanges: $viewModel.hasUnsavedChanges,
+            filePath: Config.journalFilePath,
             onSave: {
                 Task {
                     await viewModel.saveContent()

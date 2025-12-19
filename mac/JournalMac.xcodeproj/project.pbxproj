@@ -11,13 +11,16 @@
 		0A73A0FAB8DF7249D0E050CE /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57BA2B04A9EE84AE39050A8 /* SidebarView.swift */; };
 		178E498A4F54153F693FA60B /* ConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB053401B888FDF020DFC26 /* ConflictResolver.swift */; };
 		21CCAB4902B5130E8ABBEFA1 /* LocalFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C41D515EAC505FE682827E /* LocalFileService.swift */; };
+		2AABD12FEC40D1F03ACA33AD /* NeovimProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9517AC577A64931672314B /* NeovimProcess.swift */; };
 		56F2CB82BC134407D94BD0CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B17A1C882791E53FF8C44 /* ContentView.swift */; };
 		588825A2ECE69EDE020F1E2A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFD09C9444CEEAC72E0F25A /* Config.swift */; };
 		68EBC8C8C81D1A10B7BDB670 /* VimEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8B0D320A774F569AC4B739 /* VimEngine.swift */; };
 		7391CC59ADC28A998766EE78 /* MarkdownPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA919163FE419AA7DB7158B /* MarkdownPreviewView.swift */; };
 		743974F0ADFA4E2472208E7E /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4BA499209E3FA9076077B4 /* SupabaseService.swift */; };
 		771F6AFE1AA9731EB6BA5A6F /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3589A09D8426982E68EDCFDF /* EditorView.swift */; };
+		7D19F1CEFA226C9B5C6E2592 /* MessagePack in Frameworks */ = {isa = PBXBuildFile; productRef = B3536D9033D0142FE61960D2 /* MessagePack */; };
 		7EE9046145DC29DCE8A61B19 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6585FDFD88EB518E65060B2 /* MarkdownParser.swift */; };
+		9EC49A0E32827C0D9BAD8127 /* NeovimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D358D65C2EAD65BBB1402417 /* NeovimView.swift */; };
 		AF1D3A332A0801437578638C /* JournalMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEEB9A42CC1A1981B5375 /* JournalMacApp.swift */; };
 		B7088FA349CC7306E85D1462 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 70943F4220CCC5F0F0A81F7A /* Supabase */; };
 		C06A0577CF9D7D6E70BE752D /* VimTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC5AD6B4D9E0FF0C61B776 /* VimTextView.swift */; };
@@ -31,11 +34,13 @@
 		49C41D515EAC505FE682827E /* LocalFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileService.swift; sourceTree = "<group>"; };
 		6E4BA499209E3FA9076077B4 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
 		91A48C2AE5728B1BBD3944B2 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		9B9517AC577A64931672314B /* NeovimProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeovimProcess.swift; sourceTree = "<group>"; };
 		A57BA2B04A9EE84AE39050A8 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		A5EC5AD6B4D9E0FF0C61B776 /* VimTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTextView.swift; sourceTree = "<group>"; };
 		AF5B566FAA065BC34E883D64 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 		B0DE8A1A8A37026667057FEC /* JournalMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JournalMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB494F2B1CA4960A8F3CFFAE /* JournalMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JournalMac.entitlements; sourceTree = "<group>"; };
+		D358D65C2EAD65BBB1402417 /* NeovimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeovimView.swift; sourceTree = "<group>"; };
 		D6585FDFD88EB518E65060B2 /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
 		DF8AEEB9A42CC1A1981B5375 /* JournalMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMacApp.swift; sourceTree = "<group>"; };
 		E67B17A1C882791E53FF8C44 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7088FA349CC7306E85D1462 /* Supabase in Frameworks */,
+				7D19F1CEFA226C9B5C6E2592 /* MessagePack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +113,7 @@
 			children = (
 				49C41D515EAC505FE682827E /* LocalFileService.swift */,
 				D6585FDFD88EB518E65060B2 /* MarkdownParser.swift */,
+				9B9517AC577A64931672314B /* NeovimProcess.swift */,
 				6E4BA499209E3FA9076077B4 /* SupabaseService.swift */,
 			);
 			path = Services;
@@ -126,6 +133,7 @@
 				E67B17A1C882791E53FF8C44 /* ContentView.swift */,
 				3589A09D8426982E68EDCFDF /* EditorView.swift */,
 				ECA919163FE419AA7DB7158B /* MarkdownPreviewView.swift */,
+				D358D65C2EAD65BBB1402417 /* NeovimView.swift */,
 				A57BA2B04A9EE84AE39050A8 /* SidebarView.swift */,
 				EE8B0D320A774F569AC4B739 /* VimEngine.swift */,
 				A5EC5AD6B4D9E0FF0C61B776 /* VimTextView.swift */,
@@ -158,6 +166,7 @@
 			name = JournalMac;
 			packageProductDependencies = (
 				70943F4220CCC5F0F0A81F7A /* Supabase */,
+				B3536D9033D0142FE61960D2 /* MessagePack */,
 			);
 			productName = JournalMac;
 			productReference = B0DE8A1A8A37026667057FEC /* JournalMac.app */;
@@ -189,6 +198,7 @@
 			mainGroup = DF8C4F56A54B4A6D1AC568E0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				A17503A56D08465B5A3FE367 /* XCRemoteSwiftPackageReference "MessagePack.swift" */,
 				B15930DEC56FAAB9E88A7BFE /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -215,6 +225,8 @@
 				21CCAB4902B5130E8ABBEFA1 /* LocalFileService.swift in Sources */,
 				7EE9046145DC29DCE8A61B19 /* MarkdownParser.swift in Sources */,
 				7391CC59ADC28A998766EE78 /* MarkdownPreviewView.swift in Sources */,
+				2AABD12FEC40D1F03ACA33AD /* NeovimProcess.swift in Sources */,
+				9EC49A0E32827C0D9BAD8127 /* NeovimView.swift in Sources */,
 				0A73A0FAB8DF7249D0E050CE /* SidebarView.swift in Sources */,
 				743974F0ADFA4E2472208E7E /* SupabaseService.swift in Sources */,
 				68EBC8C8C81D1A10B7BDB670 /* VimEngine.swift in Sources */,
@@ -412,6 +424,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A17503A56D08465B5A3FE367 /* XCRemoteSwiftPackageReference "MessagePack.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/a2/MessagePack.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		B15930DEC56FAAB9E88A7BFE /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/supabase/supabase-swift";
@@ -427,6 +447,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B15930DEC56FAAB9E88A7BFE /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		B3536D9033D0142FE61960D2 /* MessagePack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A17503A56D08465B5A3FE367 /* XCRemoteSwiftPackageReference "MessagePack.swift" */;
+			productName = MessagePack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

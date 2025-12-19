@@ -18,6 +18,9 @@ packages:
   Supabase:
     url: https://github.com/supabase/supabase-swift
     from: "2.0.0"
+  MessagePack:
+    url: https://github.com/a2/MessagePack.swift
+    from: "4.0.0"
 
 targets:
   JournalMac:
@@ -27,6 +30,7 @@ targets:
       - JournalMac
     dependencies:
       - package: Supabase
+      - package: MessagePack
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops.mac
