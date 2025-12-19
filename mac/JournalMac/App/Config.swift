@@ -8,7 +8,7 @@ enum Config {
     // MARK: - Local File Path
     static var journalFilePath: String {
         let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documentsPath.appendingPathComponent("Journal.md").path
+        return documentsPath.appendingPathComponent("Drops/Journal.md").path
     }
 
     // MARK: - Sync Settings

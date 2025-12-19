@@ -31,34 +31,21 @@ class EditorViewModel: ObservableObject {
         defer { isLoading = false }
 
         do {
-            // 1. Supabase에서 먼저 가져오기
-            let remoteEntries = try await supabase.fetchEntries()
-            entries = remoteEntries.sorted { $0.timestamp > $1.timestamp }
-
-            // 2. Journal.md 생성/업데이트
-            if entries.isEmpty {
-                content = "# Journal\n\n---\n"
-            } else {
-                content = MarkdownParser.composeDocument(entries: entries)
-            }
-
-            // 3. 로컬 파일에 저장
-            try await localFile.writeJournal(content)
-
+            // 1. 로컬 파일 먼저 읽기
+            content = try await localFile.readJournal()
             error = nil
         } catch {
-            // Supabase 실패시 로컬 파일 시도
-            do {
-                content = try await localFile.readJournal()
-                let parsed = MarkdownParser.parseEntries(from: content)
-                entries = parsed.map { $0.toJournalEntry() }
-            } catch {
-                // 둘 다 실패시 빈 저널 생성
-                content = "# Journal\n\n---\n"
-                entries = []
-                try? await localFile.writeJournal(content)
-            }
-            self.error = "Offline mode: \(error.localizedDescription)"
+            // 로컬 파일 없으면 빈 저널 생성
+            content = "# Journal\n\n---\n"
+            try? await localFile.writeJournal(content)
+        }
+    }
+
+    func reloadFromFile() async {
+        do {
+            content = try await localFile.readJournal()
+        } catch {
+            self.error = error.localizedDescription
         }
     }
 

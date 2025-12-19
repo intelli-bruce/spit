@@ -8,44 +8,40 @@ struct EditorView: View {
     @FocusState private var isFocused: Bool
 
     var body: some View {
-        ScrollView {
-            TextEditor(text: $content)
-                .font(.system(size: fontSize, design: .monospaced))
-                .scrollContentBackground(.hidden)
-                .padding()
-                .focused($isFocused)
-                .onChange(of: content) { _, _ in
-                    hasUnsavedChanges = true
-                }
-        }
-        .background(Color(nsColor: .textBackgroundColor))
-        .toolbar {
-            ToolbarItemGroup(placement: .automatic) {
-                Spacer()
-
-                Button {
-                    fontSize = max(10, fontSize - 2)
-                } label: {
-                    Image(systemName: "minus.magnifyingglass")
-                }
-                .help("Decrease font size")
-
-                Text("\(Int(fontSize))pt")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .frame(width: 40)
-
-                Button {
-                    fontSize = min(24, fontSize + 2)
-                } label: {
-                    Image(systemName: "plus.magnifyingglass")
-                }
-                .help("Increase font size")
+        TextEditor(text: $content)
+            .font(.system(size: fontSize, design: .monospaced))
+            .padding()
+            .focused($isFocused)
+            .onChange(of: content) { _, _ in
+                hasUnsavedChanges = true
             }
-        }
-        .onAppear {
-            isFocused = true
-        }
+            .toolbar {
+                ToolbarItemGroup(placement: .automatic) {
+                    Spacer()
+
+                    Button {
+                        fontSize = max(10, fontSize - 2)
+                    } label: {
+                        Image(systemName: "minus.magnifyingglass")
+                    }
+                    .help("Decrease font size")
+
+                    Text("\(Int(fontSize))pt")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .frame(width: 40)
+
+                    Button {
+                        fontSize = min(24, fontSize + 2)
+                    } label: {
+                        Image(systemName: "plus.magnifyingglass")
+                    }
+                    .help("Increase font size")
+                }
+            }
+            .onAppear {
+                isFocused = true
+            }
     }
 }
 
