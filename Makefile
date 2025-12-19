@@ -1,58 +1,98 @@
-# Drops iOS App Makefile
+# Drops MonoRepo Makefile
 
 DEVICE_ID = 00008150-000D15D02288401C
-BUNDLE_ID = com.intellieffect.drops
-SCHEME = Drops
-PROJECT = Drops.xcodeproj
-BUILD_DIR = $(HOME)/Library/Developer/Xcode/DerivedData/Drops-*/Build/Products/Debug-iphoneos
-APP_PATH = $(BUILD_DIR)/Drops.app
 
-.PHONY: generate build install run device simulator clean open
+# iOS App
+IOS_DIR = ios
+IOS_BUNDLE_ID = com.intellieffect.drops
+IOS_SCHEME = Drops
+IOS_PROJECT = $(IOS_DIR)/Drops.xcodeproj
+IOS_BUILD_DIR = $(HOME)/Library/Developer/Xcode/DerivedData/Drops-*/Build/Products/Debug-iphoneos
+IOS_APP_PATH = $(IOS_BUILD_DIR)/Drops.app
 
-# Generate Xcode project from project.yml
-generate:
-	xcodegen generate
+# Mac App
+MAC_DIR = mac
+MAC_SCHEME = JournalMac
+MAC_PROJECT = $(MAC_DIR)/JournalMac.xcodeproj
 
-# Build for connected device
-build: generate
-	xcodebuild -project $(PROJECT) -scheme $(SCHEME) \
+.PHONY: ios-generate ios-build ios-install ios-run ios-device ios-simulator ios-clean ios-open
+.PHONY: mac-generate mac-build mac-run mac-clean mac-open
+.PHONY: clean help
+
+# ============================================
+# iOS App Commands
+# ============================================
+
+ios-generate:
+	cd $(IOS_DIR) && xcodegen generate
+
+ios-build: ios-generate
+	xcodebuild -project $(IOS_PROJECT) -scheme $(IOS_SCHEME) \
 		-destination 'id=$(DEVICE_ID)' \
 		-allowProvisioningUpdates build
 
-# Build for simulator
-simulator: generate
-	xcodebuild -project $(PROJECT) -scheme $(SCHEME) \
+ios-simulator: ios-generate
+	xcodebuild -project $(IOS_PROJECT) -scheme $(IOS_SCHEME) \
 		-destination 'platform=iOS Simulator,name=iPhone 17 Pro' build
 
-# Install app on device
-install:
-	xcrun devicectl device install app --device $(DEVICE_ID) $(APP_PATH)
+ios-install:
+	xcrun devicectl device install app --device $(DEVICE_ID) $(IOS_APP_PATH)
 
-# Launch app on device
-run:
-	xcrun devicectl device process launch --device $(DEVICE_ID) $(BUNDLE_ID)
+ios-run:
+	xcrun devicectl device process launch --device $(DEVICE_ID) $(IOS_BUNDLE_ID)
 
-# Build, install, and run on device
-device: build install run
+ios-device: ios-build ios-install ios-run
 
-# Clean build artifacts
-clean:
-	xcodebuild -project $(PROJECT) -scheme $(SCHEME) clean
+ios-clean:
+	xcodebuild -project $(IOS_PROJECT) -scheme $(IOS_SCHEME) clean
 	rm -rf ~/Library/Developer/Xcode/DerivedData/Drops-*
 
-# Open in Xcode
-open:
-	open $(PROJECT)
+ios-open:
+	open $(IOS_PROJECT)
 
-# Show help
+# ============================================
+# Mac App Commands
+# ============================================
+
+mac-generate:
+	cd $(MAC_DIR) && xcodegen generate
+
+mac-build: mac-generate
+	xcodebuild -project $(MAC_PROJECT) -scheme $(MAC_SCHEME) build
+
+mac-run: mac-build
+	open $(MAC_DIR)/build/Debug/JournalMac.app
+
+mac-clean:
+	xcodebuild -project $(MAC_PROJECT) -scheme $(MAC_SCHEME) clean
+	rm -rf ~/Library/Developer/Xcode/DerivedData/JournalMac-*
+
+mac-open:
+	open $(MAC_PROJECT)
+
+# ============================================
+# Common Commands
+# ============================================
+
+clean: ios-clean mac-clean
+
 help:
-	@echo "Drops iOS App Build Commands"
+	@echo "Drops MonoRepo Build Commands"
 	@echo ""
-	@echo "  make device     - Build, install, and run on connected iPhone"
-	@echo "  make build      - Build for connected device"
-	@echo "  make simulator  - Build for iOS Simulator"
-	@echo "  make install    - Install app on device"
-	@echo "  make run        - Launch app on device"
-	@echo "  make generate   - Generate Xcode project"
-	@echo "  make clean      - Clean build artifacts"
-	@echo "  make open       - Open in Xcode"
+	@echo "iOS App:"
+	@echo "  make ios-device    - Build, install, and run on connected iPhone"
+	@echo "  make ios-build     - Build for connected device"
+	@echo "  make ios-simulator - Build for iOS Simulator"
+	@echo "  make ios-generate  - Generate Xcode project"
+	@echo "  make ios-clean     - Clean build artifacts"
+	@echo "  make ios-open      - Open in Xcode"
+	@echo ""
+	@echo "Mac App:"
+	@echo "  make mac-build     - Build Mac app"
+	@echo "  make mac-run       - Build and run Mac app"
+	@echo "  make mac-generate  - Generate Xcode project"
+	@echo "  make mac-clean     - Clean build artifacts"
+	@echo "  make mac-open      - Open in Xcode"
+	@echo ""
+	@echo "Common:"
+	@echo "  make clean         - Clean all build artifacts"

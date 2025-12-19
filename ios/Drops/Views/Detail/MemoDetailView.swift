@@ -30,6 +30,30 @@ struct MemoDetailView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    Task {
+                        await viewModel.sendToJournal(memo)
+                    }
+                } label: {
+                    if viewModel.isSendingToJournal {
+                        ProgressView()
+                            .scaleEffect(0.8)
+                    } else {
+                        Image(systemName: viewModel.journalSyncSuccess ? "checkmark.circle.fill" : "square.and.arrow.up")
+                    }
+                }
+                .disabled(viewModel.isSendingToJournal || memo.text.isEmpty)
+            }
+        }
+        .alert("Journal 전송 실패", isPresented: .constant(viewModel.journalSyncError != nil)) {
+            Button("확인") {
+                viewModel.resetJournalSyncState()
+            }
+        } message: {
+            Text(viewModel.journalSyncError ?? "")
+        }
         .onDisappear {
             viewModel.stopPlayback()
         }

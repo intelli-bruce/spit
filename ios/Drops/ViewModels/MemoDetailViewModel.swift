@@ -7,10 +7,14 @@ final class MemoDetailViewModel {
     let audioPlayer = AudioPlayer()
     let audioRecorder = AudioRecorder()
     private let whisperService = WhisperService()
+    private let journalService = JournalSyncService.shared
 
     var isRecordingThread = false
     var textInput = ""
     var playbackRate: Float = 1.0
+    var isSendingToJournal = false
+    var journalSyncError: String?
+    var journalSyncSuccess = false
 
     var isPlaying: Bool {
         audioPlayer.isPlaying
@@ -166,5 +170,30 @@ final class MemoDetailViewModel {
         }
 
         try? context.save()
+    }
+
+    // MARK: - Journal Sync
+
+    func sendToJournal(_ memo: Memo) async {
+        isSendingToJournal = true
+        journalSyncError = nil
+        journalSyncSuccess = false
+
+        do {
+            try await journalService.sendMemoToJournal(memo)
+            journalSyncSuccess = true
+            HapticManager.success()
+        } catch {
+            print("Journal sync failed: \(error)")
+            journalSyncError = error.localizedDescription
+            HapticManager.error()
+        }
+
+        isSendingToJournal = false
+    }
+
+    func resetJournalSyncState() {
+        journalSyncError = nil
+        journalSyncSuccess = false
     }
 }

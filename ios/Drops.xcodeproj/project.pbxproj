@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		053653CB0DEA4A4C5E4FC834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DA86010B23A7DC8BDF8D2F /* Assets.xcassets */; };
+		08C414C170988AAB1C4298D4 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7CB85E61EABC167FE87B4C /* Memo.swift */; };
+		11AA1BCD7DA324695B88ED21 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67C893B478967B16DED40A /* OnboardingView.swift */; };
+		1B55B75B7D059ADABF9B7A10 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE8F8801EE097D0E56BB3DA /* EmptyStateView.swift */; };
+		229B4E7C98376169A0E66DF0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E99A0562004A964FBC931 /* HomeViewModel.swift */; };
+		287FE19C0AA0BE65FB0004D4 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD89B328C6474977191BFF7 /* AudioPlayer.swift */; };
+		2AB493F1D5449B94394A634B /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFA492399E8900DEBA48733 /* AudioRecorder.swift */; };
+		2E6A492E832EB73A13F2009D /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350A9EEBD8624333783C02A /* RecordingViewModel.swift */; };
+		316202C9E04640D6CDC22E05 /* DropsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD73CC8EC6F5E391187405FB /* DropsApp.swift */; };
+		3E39BE7AD8CC65F5EEEA2F8C /* JournalSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB7D1A2502AEC5B078587E /* JournalSyncService.swift */; };
+		5F48231B71DD45A479BC962C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA80C5ADFA78672AA6CCF04F /* Assets.xcassets */; };
+		5FDD201F052BFFC3BA6ECF19 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4968769DD7368C2219C981 /* MemoDetailView.swift */; };
+		6416245229A34F2949C654A4 /* DropsWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 05622E90D065D1EBF8F214E8 /* DropsWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		730B80A6D40411FD156A9461 /* DropsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E40C8E4B23A10EFCBFF3B06 /* DropsWidget.swift */; };
+		7DBCE03E0C4F46CFAAA655D5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C1E8613A044443932F17A /* Date+Extensions.swift */; };
+		7F028FA582856BAA09EECCC5 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE894EF9DA8D7FEAFE47FCD9 /* SupabaseService.swift */; };
+		8A41C65A87DDB264CBEB9ECF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46F763D70D503BB34644C92 /* Config.swift */; };
+		9ACE35FE5E4D29D82206A3AE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC96A5C9FE348070C7902C3 /* HomeView.swift */; };
+		9CF87B4B52C8E9CB5BF63FF2 /* ThreadBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C524DCDCF2278F5D750F48 /* ThreadBubble.swift */; };
+		A28805C9FC27150454CA23B1 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0EE591763D2DB16C7B5C71 /* MemoDetailViewModel.swift */; };
+		AC5BE5667232464307E729D6 /* DropsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF352364CD7AD9330339A4D /* DropsWidgetBundle.swift */; };
+		B746E6C686E81AB85089ED39 /* InputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04ECF5768F6177D4A288154 /* InputBar.swift */; };
+		CCBD3BDF8C50EA28397BF4EF /* ThreadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C609D20E74FAA960FF38C00 /* ThreadItem.swift */; };
+		D193B68BD79C035F4AA872CD /* Secrets.swift.template in Resources */ = {isa = PBXBuildFile; fileRef = AA739D40B38AFDEDFE0231F7 /* Secrets.swift.template */; };
+		D2B84F4E791F2F5F485D7AB8 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B0B749E21C2151C84A1D8 /* HapticManager.swift */; };
+		DF8FF90E0AA461C7C706C586 /* WhisperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F6D298E62C2606792A0EFA /* WhisperService.swift */; };
+		ECDF5CC2F7B4C43E8285635C /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92188D5F39BB37278FBA713F /* RecordButton.swift */; };
+		F0CAD897CCD53F8433331C9B /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05101E9F885C3FB4D0118E46 /* MemoCell.swift */; };
+		F2C76DCA254FAEDA48AD0596 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE563346F3F514AB23073D /* WaveformView.swift */; };
+		FDFAF8E96E2D7B7D8F1772EA /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 89B7CE683990F99CAF66CB05 /* Supabase */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6FF45109CEA04604E3E2D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C86888F2F50DB011DDFE7C1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BE075BB899ED364CC2AAA00;
+			remoteInfo = DropsWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2AAC88BF3EE6B1521C5CF95 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6416245229A34F2949C654A4 /* DropsWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05101E9F885C3FB4D0118E46 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
+		05622E90D065D1EBF8F214E8 /* DropsWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = DropsWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E4968769DD7368C2219C981 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
+		0E7CB85E61EABC167FE87B4C /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		12DA2AC40EB759F140C46342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2DFB7D1A2502AEC5B078587E /* JournalSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalSyncService.swift; sourceTree = "<group>"; };
+		2F67C893B478967B16DED40A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		420C1E8613A044443932F17A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		4A7E99A0562004A964FBC931 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4C609D20E74FAA960FF38C00 /* ThreadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadItem.swift; sourceTree = "<group>"; };
+		4DE8F8801EE097D0E56BB3DA /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		4E40C8E4B23A10EFCBFF3B06 /* DropsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsWidget.swift; sourceTree = "<group>"; };
+		603B0B749E21C2151C84A1D8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		6CC96A5C9FE348070C7902C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		776F0668627B06922D28D42D /* DropsWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DropsWidget.entitlements; sourceTree = "<group>"; };
+		7EF352364CD7AD9330339A4D /* DropsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsWidgetBundle.swift; sourceTree = "<group>"; };
+		92188D5F39BB37278FBA713F /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		9B0EE591763D2DB16C7B5C71 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
+		9FD89B328C6474977191BFF7 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		AA739D40B38AFDEDFE0231F7 /* Secrets.swift.template */ = {isa = PBXFileReference; path = Secrets.swift.template; sourceTree = "<group>"; };
+		B9C524DCDCF2278F5D750F48 /* ThreadBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadBubble.swift; sourceTree = "<group>"; };
+		BC87A748EA2C3B74AFE14299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C350A9EEBD8624333783C02A /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
+		C5507D2550939872469BF488 /* Drops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drops.entitlements; sourceTree = "<group>"; };
+		CA80C5ADFA78672AA6CCF04F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D04ECF5768F6177D4A288154 /* InputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBar.swift; sourceTree = "<group>"; };
+		DBFA492399E8900DEBA48733 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		DD73CC8EC6F5E391187405FB /* DropsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsApp.swift; sourceTree = "<group>"; };
+		DFDE563346F3F514AB23073D /* WaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+		E46F763D70D503BB34644C92 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F1DA86010B23A7DC8BDF8D2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7898C12A97EB961E425BA92 /* Drops.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Drops.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F6D298E62C2606792A0EFA /* WhisperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperService.swift; sourceTree = "<group>"; };
+		FE894EF9DA8D7FEAFE47FCD9 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		127D8DE1378BD9898B57D32E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDFAF8E96E2D7B7D8F1772EA /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03F89315BA10BDC0647D543F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA80C5ADFA78672AA6CCF04F /* Assets.xcassets */,
+				C5507D2550939872469BF488 /* Drops.entitlements */,
+				12DA2AC40EB759F140C46342 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		076B553DE08D4D756ECB53F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7898C12A97EB961E425BA92 /* Drops.app */,
+				05622E90D065D1EBF8F214E8 /* DropsWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CE1E4D8FE81DE2C9A8B2A3E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E46F763D70D503BB34644C92 /* Config.swift */,
+				DD73CC8EC6F5E391187405FB /* DropsApp.swift */,
+				AA739D40B38AFDEDFE0231F7 /* Secrets.swift.template */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		64EF0CCF479CEFC979CF294B /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				92188D5F39BB37278FBA713F /* RecordButton.swift */,
+				DFDE563346F3F514AB23073D /* WaveformView.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		858B23315C89CFEA29C0620F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9FD89B328C6474977191BFF7 /* AudioPlayer.swift */,
+				DBFA492399E8900DEBA48733 /* AudioRecorder.swift */,
+				603B0B749E21C2151C84A1D8 /* HapticManager.swift */,
+				2DFB7D1A2502AEC5B078587E /* JournalSyncService.swift */,
+				FE894EF9DA8D7FEAFE47FCD9 /* SupabaseService.swift */,
+				F7F6D298E62C2606792A0EFA /* WhisperService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9093062C710C3CB3E21FC1AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				420C1E8613A044443932F17A /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		951329C0A34FB1226836D0AF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4DE8F8801EE097D0E56BB3DA /* EmptyStateView.swift */,
+				6CC96A5C9FE348070C7902C3 /* HomeView.swift */,
+				05101E9F885C3FB4D0118E46 /* MemoCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9975844B9932EDD150F1682B /* Drops */ = {
+			isa = PBXGroup;
+			children = (
+				3CE1E4D8FE81DE2C9A8B2A3E /* App */,
+				9093062C710C3CB3E21FC1AB /* Extensions */,
+				B89AE4515CF492C590C4DAF0 /* Models */,
+				03F89315BA10BDC0647D543F /* Resources */,
+				858B23315C89CFEA29C0620F /* Services */,
+				EA760A92411D8B15C4B6ABE0 /* ViewModels */,
+				AC88BF87D648C5975574235A /* Views */,
+			);
+			path = Drops;
+			sourceTree = "<group>";
+		};
+		AC88BF87D648C5975574235A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D89FDD48CE972EBF3D26F09F /* Detail */,
+				951329C0A34FB1226836D0AF /* Home */,
+				C5F75A103A83ABE75117F557 /* Onboarding */,
+				64EF0CCF479CEFC979CF294B /* Recording */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AD04488EC26DDD67409F29CC = {
+			isa = PBXGroup;
+			children = (
+				9975844B9932EDD150F1682B /* Drops */,
+				F931F9BFEA5BDDB7C9893F8B /* DropsWidget */,
+				076B553DE08D4D756ECB53F3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B89AE4515CF492C590C4DAF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E7CB85E61EABC167FE87B4C /* Memo.swift */,
+				4C609D20E74FAA960FF38C00 /* ThreadItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C5F75A103A83ABE75117F557 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2F67C893B478967B16DED40A /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D89FDD48CE972EBF3D26F09F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D04ECF5768F6177D4A288154 /* InputBar.swift */,
+				0E4968769DD7368C2219C981 /* MemoDetailView.swift */,
+				B9C524DCDCF2278F5D750F48 /* ThreadBubble.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		EA760A92411D8B15C4B6ABE0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4A7E99A0562004A964FBC931 /* HomeViewModel.swift */,
+				9B0EE591763D2DB16C7B5C71 /* MemoDetailViewModel.swift */,
+				C350A9EEBD8624333783C02A /* RecordingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F931F9BFEA5BDDB7C9893F8B /* DropsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA86010B23A7DC8BDF8D2F /* Assets.xcassets */,
+				776F0668627B06922D28D42D /* DropsWidget.entitlements */,
+				4E40C8E4B23A10EFCBFF3B06 /* DropsWidget.swift */,
+				7EF352364CD7AD9330339A4D /* DropsWidgetBundle.swift */,
+				BC87A748EA2C3B74AFE14299 /* Info.plist */,
+			);
+			path = DropsWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CAEB3A8C326CF7343209C2B /* Drops */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E394CCD62622B8D61AEA3465 /* Build configuration list for PBXNativeTarget "Drops" */;
+			buildPhases = (
+				F87BAD49619D362509C0BF85 /* Sources */,
+				8AFFAC1EEDA7F0EA8BD9EA22 /* Resources */,
+				127D8DE1378BD9898B57D32E /* Frameworks */,
+				B2AAC88BF3EE6B1521C5CF95 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8E790EE36D8170ABBF782F4 /* PBXTargetDependency */,
+			);
+			name = Drops;
+			packageProductDependencies = (
+				89B7CE683990F99CAF66CB05 /* Supabase */,
+			);
+			productName = Drops;
+			productReference = F7898C12A97EB961E425BA92 /* Drops.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6BE075BB899ED364CC2AAA00 /* DropsWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46459F2667EEB9E51AF94C57 /* Build configuration list for PBXNativeTarget "DropsWidget" */;
+			buildPhases = (
+				8506787E6D44731F302D428C /* Sources */,
+				C7E7CCA94A5E7BB5755225C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropsWidget;
+			packageProductDependencies = (
+			);
+			productName = DropsWidget;
+			productReference = 05622E90D065D1EBF8F214E8 /* DropsWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C86888F2F50DB011DDFE7C1A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					5CAEB3A8C326CF7343209C2B = {
+						DevelopmentTeam = J2Y925QHNV;
+						ProvisioningStyle = Automatic;
+					};
+					6BE075BB899ED364CC2AAA00 = {
+						DevelopmentTeam = J2Y925QHNV;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1E4C4CCCA766B2C0D64E0026 /* Build configuration list for PBXProject "Drops" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AD04488EC26DDD67409F29CC;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F2EC4CBF620EEF14A1DE3525 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CAEB3A8C326CF7343209C2B /* Drops */,
+				6BE075BB899ED364CC2AAA00 /* DropsWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AFFAC1EEDA7F0EA8BD9EA22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F48231B71DD45A479BC962C /* Assets.xcassets in Resources */,
+				D193B68BD79C035F4AA872CD /* Secrets.swift.template in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7E7CCA94A5E7BB5755225C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				053653CB0DEA4A4C5E4FC834 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8506787E6D44731F302D428C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				730B80A6D40411FD156A9461 /* DropsWidget.swift in Sources */,
+				AC5BE5667232464307E729D6 /* DropsWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F87BAD49619D362509C0BF85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287FE19C0AA0BE65FB0004D4 /* AudioPlayer.swift in Sources */,
+				2AB493F1D5449B94394A634B /* AudioRecorder.swift in Sources */,
+				8A41C65A87DDB264CBEB9ECF /* Config.swift in Sources */,
+				7DBCE03E0C4F46CFAAA655D5 /* Date+Extensions.swift in Sources */,
+				316202C9E04640D6CDC22E05 /* DropsApp.swift in Sources */,
+				1B55B75B7D059ADABF9B7A10 /* EmptyStateView.swift in Sources */,
+				D2B84F4E791F2F5F485D7AB8 /* HapticManager.swift in Sources */,
+				9ACE35FE5E4D29D82206A3AE /* HomeView.swift in Sources */,
+				229B4E7C98376169A0E66DF0 /* HomeViewModel.swift in Sources */,
+				B746E6C686E81AB85089ED39 /* InputBar.swift in Sources */,
+				3E39BE7AD8CC65F5EEEA2F8C /* JournalSyncService.swift in Sources */,
+				08C414C170988AAB1C4298D4 /* Memo.swift in Sources */,
+				F0CAD897CCD53F8433331C9B /* MemoCell.swift in Sources */,
+				5FDD201F052BFFC3BA6ECF19 /* MemoDetailView.swift in Sources */,
+				A28805C9FC27150454CA23B1 /* MemoDetailViewModel.swift in Sources */,
+				11AA1BCD7DA324695B88ED21 /* OnboardingView.swift in Sources */,
+				ECDF5CC2F7B4C43E8285635C /* RecordButton.swift in Sources */,
+				2E6A492E832EB73A13F2009D /* RecordingViewModel.swift in Sources */,
+				7F028FA582856BAA09EECCC5 /* SupabaseService.swift in Sources */,
+				9CF87B4B52C8E9CB5BF63FF2 /* ThreadBubble.swift in Sources */,
+				CCBD3BDF8C50EA28397BF4EF /* ThreadItem.swift in Sources */,
+				F2C76DCA254FAEDA48AD0596 /* WaveformView.swift in Sources */,
+				DF8FF90E0AA461C7C706C586 /* WhisperService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B8E790EE36D8170ABBF782F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BE075BB899ED364CC2AAA00 /* DropsWidget */;
+			targetProxy = A6FF45109CEA04604E3E2D1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2581ED533B2959E7CA6CE307 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Drops/Resources/Drops.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Drops/Resources/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Drops needs microphone access to record voice memos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B203CAC258ADCEBB245998B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DropsWidget/DropsWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DropsWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5EED83DFC744289309BBEFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DropsWidget/DropsWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DropsWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7008D5A0F6666B164462DF3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J2Y925QHNV;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		D47BB2FB41BD4FC8DAB29FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = J2Y925QHNV;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		FCC79A11BCE72F40BA0A43ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Drops/Resources/Drops.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Drops/Resources/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Drops needs microphone access to record voice memos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1E4C4CCCA766B2C0D64E0026 /* Build configuration list for PBXProject "Drops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D47BB2FB41BD4FC8DAB29FC2 /* Debug */,
+				7008D5A0F6666B164462DF3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		46459F2667EEB9E51AF94C57 /* Build configuration list for PBXNativeTarget "DropsWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B203CAC258ADCEBB245998B /* Debug */,
+				5EED83DFC744289309BBEFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E394CCD62622B8D61AEA3465 /* Build configuration list for PBXNativeTarget "Drops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2581ED533B2959E7CA6CE307 /* Debug */,
+				FCC79A11BCE72F40BA0A43ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F2EC4CBF620EEF14A1DE3525 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89B7CE683990F99CAF66CB05 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2EC4CBF620EEF14A1DE3525 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C86888F2F50DB011DDFE7C1A /* Project object */;
+}

@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
+               BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
                BuildableName = "Drops.app"
                BlueprintName = "Drops"
                ReferencedContainer = "container:Drops.xcodeproj">
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4CC2227E5E0E20032828B435"
+               BlueprintIdentifier = "6BE075BB899ED364CC2AAA00"
                BuildableName = "DropsWidget.appex"
                BlueprintName = "DropsWidget"
                ReferencedContainer = "container:Drops.xcodeproj">
@@ -46,7 +46,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
+            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
             BuildableName = "Drops.app"
             BlueprintName = "Drops"
             ReferencedContainer = "container:Drops.xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
+            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
             BuildableName = "Drops.app"
             BlueprintName = "Drops"
             ReferencedContainer = "container:Drops.xcodeproj">
@@ -90,7 +90,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EA0B53ED5C0AA2468D687C8E"
+            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
             BuildableName = "Drops.app"
             BlueprintName = "Drops"
             ReferencedContainer = "container:Drops.xcodeproj">

@@ -1,0 +1,42 @@
+name: JournalMac
+
+options:
+  bundleIdPrefix: com.intellieffect
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: J2Y925QHNV
+    CODE_SIGN_STYLE: Automatic
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    from: "2.0.0"
+
+targets:
+  JournalMac:
+    type: application
+    platform: macOS
+    sources:
+      - JournalMac
+    dependencies:
+      - package: Supabase
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops.mac
+        PRODUCT_NAME: Drops
+        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_CFBundleDisplayName: "Drops"
+        INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © 2025 IntelliEffect. All rights reserved."
+        INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.productivity"
+    entitlements:
+      path: JournalMac/App/JournalMac.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.network.client: true

@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 enum Config {
     // MARK: - OpenAI API
@@ -7,6 +8,10 @@ enum Config {
     static let whisperEndpoint = "https://api.openai.com/v1/audio/transcriptions"
     static let whisperModel = "whisper-1"
 
+    // MARK: - Supabase
+    static let supabaseURL = "https://nouigqxpieylsqhggcmt.supabase.co"
+    static let supabaseAnonKey = "sb_publishable_BYEyKDUO7XfwaHO01tfF2Q_IeXKHAJk"
+
     // MARK: - Recording
     static let maxRecordingDuration: TimeInterval = 180 // 3 minutes
     static let audioSampleRate: Double = 44100.0
@@ -14,4 +19,9 @@ enum Config {
 
     // MARK: - App
     static let appGroupIdentifier = "group.com.intellieffect.drops"
+
+    // MARK: - Device
+    static var deviceId: String {
+        UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+    }
 }
