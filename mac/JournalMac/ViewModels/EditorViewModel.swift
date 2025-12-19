@@ -74,6 +74,15 @@ class EditorViewModel: ObservableObject {
         }
     }
 
+    func saveContent() async {
+        do {
+            try await localFile.writeJournal(content)
+            hasUnsavedChanges = false
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+
     func contentDidChange() {
         hasUnsavedChanges = true
     }
