@@ -3,13 +3,13 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Memo.createdAt, order: .reverse) private var memos: [Memo]
+    @Query(sort: \Note.createdAt, order: .reverse) private var notes: [Note]
 
     @Binding var shouldStartRecording: Bool
 
     @State private var viewModel = HomeViewModel()
     @State private var recordingViewModel = RecordingViewModel()
-    @State private var selectedMemo: Memo?
+    @State private var selectedNote: Note?
     @State private var showPermissionAlert = false
 
     init(shouldStartRecording: Binding<Bool> = .constant(false)) {
@@ -19,10 +19,10 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                if memos.isEmpty {
+                if notes.isEmpty {
                     EmptyStateView()
                 } else {
-                    memoList
+                    noteList
                 }
 
                 VStack {
@@ -33,9 +33,9 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 }
             }
-            .navigationTitle("Drops")
-            .navigationDestination(item: $selectedMemo) { memo in
-                MemoDetailView(memo: memo)
+            .navigationTitle("Throw")
+            .navigationDestination(item: $selectedNote) { note in
+                NoteDetailView(note: note)
             }
             .overlay(alignment: .bottom) {
                 if viewModel.showUndoToast {
@@ -68,17 +68,17 @@ struct HomeView: View {
         }
     }
 
-    private var memoList: some View {
+    private var noteList: some View {
         List {
-            ForEach(memos) { memo in
-                MemoCell(memo: memo)
+            ForEach(notes.filter { !$0.isDeleted }) { note in
+                NoteCell(note: note)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        selectedMemo = memo
+                        selectedNote = note
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
-                            viewModel.deleteMemo(memo, context: modelContext)
+                            viewModel.deleteNote(note, context: modelContext)
                         } label: {
                             Label("삭제", systemImage: "trash")
                         }
@@ -90,7 +90,7 @@ struct HomeView: View {
 
     private var undoToast: some View {
         HStack {
-            Text("메모가 삭제되었습니다")
+            Text("노트가 삭제되었습니다")
                 .font(.subheadline)
 
             Spacer()
@@ -105,9 +105,11 @@ struct HomeView: View {
         .padding(.horizontal)
     }
 
-    private func handleRecordingComplete(_ memo: Memo) {
-        Task {
-            await viewModel.processSTT(for: memo, context: modelContext)
+    private func handleRecordingComplete(_ note: Note) {
+        if let audioBlock = note.blocks.first(where: { $0.type == .audio }) {
+            Task {
+                await viewModel.processSTT(for: audioBlock, context: modelContext)
+            }
         }
     }
 
@@ -118,7 +120,6 @@ struct HomeView: View {
 
         Task {
             if recordingViewModel.checkPermission() {
-                // 약간의 딜레이를 주어 UI가 준비된 후 녹음 시작
                 try? await Task.sleep(nanoseconds: 300_000_000)
                 await MainActor.run {
                     recordingViewModel.startRecording()
@@ -142,5 +143,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .modelContainer(for: [Memo.self, ThreadItem.self], inMemory: true)
+        .modelContainer(for: [Note.self, NoteBlock.self, Tag.self], inMemory: true)
 }

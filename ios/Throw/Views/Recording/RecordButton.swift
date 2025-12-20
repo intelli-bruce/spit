@@ -5,7 +5,7 @@ struct RecordButton: View {
     @Environment(\.modelContext) private var modelContext
     @Bindable var viewModel: RecordingViewModel
 
-    let onComplete: (Memo) -> Void
+    let onComplete: (Note) -> Void
 
     @State private var showPermissionAlert = false
 
@@ -68,8 +68,8 @@ struct RecordButton: View {
 
     private func handleTap() {
         if viewModel.isRecording {
-            viewModel.stopRecording(context: modelContext) { memo in
-                onComplete(memo)
+            viewModel.stopRecording(context: modelContext) { note in
+                onComplete(note)
             }
         } else {
             Task {
@@ -90,5 +90,5 @@ struct RecordButton: View {
 
 #Preview {
     RecordButton(viewModel: RecordingViewModel()) { _ in }
-        .modelContainer(for: [Memo.self], inMemory: true)
+        .modelContainer(for: [Note.self, NoteBlock.self], inMemory: true)
 }

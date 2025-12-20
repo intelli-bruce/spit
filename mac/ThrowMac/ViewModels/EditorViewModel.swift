@@ -1,125 +1,258 @@
 import Foundation
+import SwiftData
 import Combine
 import Supabase
 
 @MainActor
-class EditorViewModel: ObservableObject {
-    @Published var content: String = ""
-    @Published var entries: [JournalEntry] = []
-    @Published var selectedEntry: JournalEntry?
-    @Published var isLoading = false
-    @Published var isSyncing = false
-    @Published var error: String?
-    @Published var hasUnsavedChanges = false
+@Observable
+class EditorViewModel {
+    var notes: [Note] = []
+    var selectedNote: Note?
+    var isLoading = false
+    var isSyncing = false
+    var error: String?
+    var searchText = ""
+    var selectedTagFilter: Tag?
 
-    private var cancellables = Set<AnyCancellable>()
-    private var saveTask: Task<Void, Never>?
-    private var realtimeChannel: RealtimeChannelV2?
-
+    private var realtimeChannels: [RealtimeChannelV2] = []
     private let supabase = SupabaseService.shared
-    private let localFile = LocalFileService.shared
 
-    init() {
-        setupAutoSave()
-        setupFileWatching()
+    // MARK: - Filtered Notes
+
+    var filteredNotes: [Note] {
+        var result = notes.filter { !$0.isDeleted }
+
+        if !searchText.isEmpty {
+            result = result.filter { note in
+                note.preview.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+
+        if let tag = selectedTagFilter {
+            result = result.filter { note in
+                note.tags.contains { $0.id == tag.id }
+            }
+        }
+
+        return result.sorted { $0.createdAt > $1.createdAt }
     }
 
     // MARK: - Loading
 
-    func loadContent() async {
+    func loadNotes(context: ModelContext) async {
         isLoading = true
         defer { isLoading = false }
 
+        // Load from local SwiftData first
+        let descriptor = FetchDescriptor<Note>(
+            sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+        )
+
+        if let localNotes = try? context.fetch(descriptor) {
+            notes = localNotes
+            print("[DEBUG] Loaded \(localNotes.count) notes from local DB")
+        } else {
+            print("[DEBUG] Failed to load notes from local DB")
+        }
+
+        // Then sync with Supabase
+        await syncWithSupabase(context: context)
+        print("[DEBUG] After sync, notes count: \(notes.count), filtered: \(filteredNotes.count)")
+    }
+
+    // MARK: - CRUD
+
+    func createNote(context: ModelContext) -> Note {
+        let note = Note()
+        context.insert(note)
+
+        let textBlock = NoteBlock(note: note, type: .text, content: "", position: 0)
+        context.insert(textBlock)
+        note.blocks.append(textBlock)
+
         do {
-            // 1. 로컬 파일 먼저 읽기
-            content = try await localFile.readJournal()
-            error = nil
+            try context.save()
+            print("[DEBUG] Saved note successfully")
         } catch {
-            // 로컬 파일 없으면 빈 저널 생성
-            content = "# Journal\n\n---\n"
-            try? await localFile.writeJournal(content)
+            print("[DEBUG] Failed to save note: \(error)")
+        }
+
+        notes.insert(note, at: 0)
+        selectedNote = note
+
+        print("[DEBUG] Created note: \(note.id), blocks: \(note.blocks.count), total notes: \(notes.count)")
+
+        // Sync to Supabase
+        Task {
+            await syncNote(note, context: context)
+        }
+
+        return note
+    }
+
+    func deleteNote(_ note: Note, context: ModelContext) {
+        note.isDeleted = true
+        note.updatedAt = Date()
+        note.syncStatus = .pending
+
+        try? context.save()
+
+        // Sync deletion
+        Task {
+            try? await supabase.deleteNote(id: note.id)
+            note.syncStatus = .synced
+            try? context.save()
         }
     }
 
-    func reloadFromFile() async {
-        do {
-            content = try await localFile.readJournal()
-        } catch {
-            self.error = error.localizedDescription
-        }
+    func updateNoteContent(_ note: Note, content: String, context: ModelContext) {
+        guard let textBlock = note.rootBlocks.first(where: { $0.type == .text }) else { return }
+
+        textBlock.content = content
+        textBlock.updatedAt = Date()
+        textBlock.version += 1
+        textBlock.syncStatus = .pending
+
+        note.updatedAt = Date()
+        note.syncStatus = .pending
+
+        try? context.save()
     }
 
-    // MARK: - Saving
+    // MARK: - Tags
 
-    private func setupAutoSave() {
-        $content
-            .debounce(for: .seconds(Config.debounceDelay), scheduler: RunLoop.main)
-            .sink { [weak self] newContent in
-                self?.saveTask?.cancel()
-                self?.saveTask = Task {
-                    await self?.saveToFile()
-                }
+    func addTag(_ tagName: String, to note: Note, context: ModelContext) async {
+        // Find or create tag locally
+        let descriptor = FetchDescriptor<Tag>(
+            predicate: #Predicate { $0.name == tagName }
+        )
+
+        var tag: Tag
+        if let existingTag = try? context.fetch(descriptor).first {
+            tag = existingTag
+        } else {
+            tag = Tag(name: tagName)
+            context.insert(tag)
+        }
+
+        if !note.tags.contains(where: { $0.id == tag.id }) {
+            note.tags.append(tag)
+            note.updatedAt = Date()
+            note.syncStatus = .pending
+            try? context.save()
+        }
+
+        // Sync to Supabase
+        Task {
+            do {
+                let remoteTag = try await supabase.findOrCreateTag(name: tagName)
+                try await supabase.addTagToNote(noteId: note.id, tagId: UUID(uuidString: remoteTag.id) ?? tag.id)
+            } catch {
+                print("Tag sync failed: \(error)")
             }
-            .store(in: &cancellables)
-    }
-
-    private func saveToFile() async {
-        guard hasUnsavedChanges else { return }
-
-        do {
-            try await localFile.writeJournal(content)
-            hasUnsavedChanges = false
-        } catch {
-            self.error = error.localizedDescription
         }
     }
 
-    func saveContent() async {
-        do {
-            try await localFile.writeJournal(content)
-            hasUnsavedChanges = false
-        } catch {
-            self.error = error.localizedDescription
+    func removeTag(_ tag: Tag, from note: Note, context: ModelContext) {
+        note.tags.removeAll { $0.id == tag.id }
+        note.updatedAt = Date()
+        note.syncStatus = .pending
+        try? context.save()
+
+        Task {
+            try? await supabase.removeTagFromNote(noteId: note.id, tagId: tag.id)
         }
-    }
-
-    func contentDidChange() {
-        hasUnsavedChanges = true
-    }
-
-    // MARK: - New Entry
-
-    func addNewEntry() {
-        let timestamp = formatTimestamp(Date())
-        let newSection = "\n\n---\n\n## \(timestamp)\n\n"
-
-        content += newSection
-
-        // Move cursor to end (handled by view)
-        hasUnsavedChanges = true
     }
 
     // MARK: - Sync
 
-    func syncWithSupabase() async {
+    func syncWithSupabase(context: ModelContext) async {
         isSyncing = true
         defer { isSyncing = false }
 
         do {
-            // Fetch remote entries
-            let remoteEntries = try await supabase.fetchEntries()
+            // Fetch remote notes
+            let remoteNotes = try await supabase.fetchNotes()
+            let noteIds = remoteNotes.compactMap { UUID(uuidString: $0.id) }
 
-            // Merge with local entries (append-only strategy)
-            let merged = mergeEntries(local: entries, remote: remoteEntries)
+            // Fetch blocks for all notes
+            let remoteBlocks = try await supabase.fetchAllBlocks(noteIds: noteIds)
 
-            // Update local state
-            entries = merged
+            // Fetch tags
+            let remoteNoteTags = try await supabase.fetchAllNoteTags(noteIds: noteIds)
 
-            // Recompose document
-            content = MarkdownParser.composeDocument(entries: merged)
+            // Merge with local
+            for dto in remoteNotes {
+                let noteId = UUID(uuidString: dto.id) ?? UUID()
 
-            // Save to file
-            try await localFile.writeJournal(content)
+                // Check if exists locally
+                let descriptor = FetchDescriptor<Note>(
+                    predicate: #Predicate { $0.id == noteId }
+                )
+
+                if let existingNote = try? context.fetch(descriptor).first {
+                    // Update if remote is newer
+                    let formatter = ISO8601DateFormatter()
+                    if let remoteDate = formatter.date(from: dto.updated_at),
+                       remoteDate > existingNote.updatedAt {
+                        existingNote.isDeleted = dto.is_deleted
+                        existingNote.updatedAt = remoteDate
+                        existingNote.syncStatus = .synced
+                    }
+                } else {
+                    // Insert new note
+                    let note = dto.toNote()
+                    context.insert(note)
+
+                    // Add blocks
+                    let noteBlocks = remoteBlocks.filter { $0.note_id == dto.id }
+                    for blockDTO in noteBlocks {
+                        let block = blockDTO.toNoteBlock()
+                        block.note = note
+                        note.blocks.append(block)
+                    }
+
+                    // Add tags
+                    if let tagDTOs = remoteNoteTags[dto.id] {
+                        for tagDTO in tagDTOs {
+                            let tag = tagDTO.toTag()
+                            let tagName = tag.name
+                            // Check if tag exists
+                            let tagDescriptor = FetchDescriptor<Tag>(
+                                predicate: #Predicate { $0.name == tagName }
+                            )
+                            if let existingTag = try? context.fetch(tagDescriptor).first {
+                                note.tags.append(existingTag)
+                            } else {
+                                context.insert(tag)
+                                note.tags.append(tag)
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Upload pending local changes
+            let pendingStatus = SyncStatus.pending
+            let pendingDescriptor = FetchDescriptor<Note>(
+                predicate: #Predicate { $0.syncStatus == pendingStatus }
+            )
+
+            if let pendingNotes = try? context.fetch(pendingDescriptor) {
+                for note in pendingNotes {
+                    await syncNote(note, context: context)
+                }
+            }
+
+            try? context.save()
+
+            // Reload notes
+            let reloadDescriptor = FetchDescriptor<Note>(
+                sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+            )
+            if let reloadedNotes = try? context.fetch(reloadDescriptor) {
+                notes = reloadedNotes
+            }
 
             error = nil
         } catch {
@@ -127,114 +260,171 @@ class EditorViewModel: ObservableObject {
         }
     }
 
-    private func mergeEntries(local: [JournalEntry], remote: [JournalEntry]) -> [JournalEntry] {
-        var merged: [UUID: JournalEntry] = [:]
+    private func syncNote(_ note: Note, context: ModelContext) async {
+        do {
+            // Create or update note
+            _ = try await supabase.createNote(note: note)
+            note.syncStatus = .synced
 
-        // Add local entries
-        for entry in local {
-            merged[entry.id] = entry
-        }
-
-        // Merge remote entries (newer wins)
-        for entry in remote {
-            if let existing = merged[entry.id] {
-                if entry.updatedAt > existing.updatedAt {
-                    merged[entry.id] = entry
-                }
-            } else {
-                merged[entry.id] = entry
+            // Sync blocks
+            for block in note.blocks where block.syncStatus == .pending {
+                _ = try await supabase.createBlock(block: block, noteId: note.id)
+                block.syncStatus = .synced
             }
-        }
 
-        // Sort by timestamp descending
-        return Array(merged.values).sorted { $0.timestamp > $1.timestamp }
+            try? context.save()
+        } catch {
+            print("Note sync failed: \(error)")
+        }
     }
 
     // MARK: - Realtime
 
-    func setupRealtime() async {
-        realtimeChannel = await supabase.subscribeToEntries(
-            onInsert: { [weak self] entry in
+    func setupRealtime(context: ModelContext) async {
+        // Subscribe to notes
+        let notesChannel = await supabase.subscribeToNotes(
+            onInsert: { [weak self] dto in
                 Task { @MainActor in
-                    self?.handleRemoteInsert(entry)
+                    self?.handleRemoteNoteInsert(dto, context: context)
                 }
             },
-            onUpdate: { [weak self] entry in
+            onUpdate: { [weak self] dto in
                 Task { @MainActor in
-                    self?.handleRemoteUpdate(entry)
+                    self?.handleRemoteNoteUpdate(dto, context: context)
                 }
             },
             onDelete: { [weak self] id in
                 Task { @MainActor in
-                    self?.handleRemoteDelete(id)
+                    self?.handleRemoteNoteDelete(id, context: context)
                 }
             }
         )
-    }
+        realtimeChannels.append(notesChannel)
 
-    private func handleRemoteInsert(_ entry: JournalEntry) {
-        guard !entries.contains(where: { $0.id == entry.id }) else { return }
-
-        entries.append(entry)
-        entries.sort { $0.timestamp > $1.timestamp }
-        content = MarkdownParser.composeDocument(entries: entries)
-
-        Task {
-            try? await localFile.writeJournal(content)
-        }
-    }
-
-    private func handleRemoteUpdate(_ entry: JournalEntry) {
-        guard let index = entries.firstIndex(where: { $0.id == entry.id }) else { return }
-
-        entries[index] = entry
-        content = MarkdownParser.composeDocument(entries: entries)
-
-        Task {
-            try? await localFile.writeJournal(content)
-        }
-    }
-
-    private func handleRemoteDelete(_ id: UUID) {
-        entries.removeAll { $0.id == id }
-        content = MarkdownParser.composeDocument(entries: entries)
-
-        Task {
-            try? await localFile.writeJournal(content)
-        }
-    }
-
-    // MARK: - File Watching
-
-    private func setupFileWatching() {
-        localFile.startWatching { [weak self] in
-            Task { @MainActor in
-                await self?.handleFileChange()
+        // Subscribe to blocks
+        let blocksChannel = await supabase.subscribeToBlocks(
+            onInsert: { [weak self] dto in
+                Task { @MainActor in
+                    self?.handleRemoteBlockInsert(dto, context: context)
+                }
+            },
+            onUpdate: { [weak self] dto in
+                Task { @MainActor in
+                    self?.handleRemoteBlockUpdate(dto, context: context)
+                }
+            },
+            onDelete: { [weak self] id in
+                Task { @MainActor in
+                    self?.handleRemoteBlockDelete(id, context: context)
+                }
             }
-        }
+        )
+        realtimeChannels.append(blocksChannel)
     }
 
-    private func handleFileChange() async {
+    private func handleRemoteNoteInsert(_ dto: NoteDTO, context: ModelContext) {
+        let noteId = UUID(uuidString: dto.id) ?? UUID()
+
+        // Check if already exists
+        let descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.id == noteId }
+        )
+        guard (try? context.fetch(descriptor).first) == nil else { return }
+
+        let note = dto.toNote()
+        context.insert(note)
+        try? context.save()
+
+        notes.insert(note, at: 0)
+    }
+
+    private func handleRemoteNoteUpdate(_ dto: NoteDTO, context: ModelContext) {
+        let noteId = UUID(uuidString: dto.id) ?? UUID()
+
+        let descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.id == noteId }
+        )
+        guard let note = try? context.fetch(descriptor).first else { return }
+
+        let formatter = ISO8601DateFormatter()
+        note.isDeleted = dto.is_deleted
+        note.updatedAt = formatter.date(from: dto.updated_at) ?? Date()
+        note.syncStatus = .synced
+
+        try? context.save()
+    }
+
+    private func handleRemoteNoteDelete(_ id: UUID, context: ModelContext) {
+        let descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.id == id }
+        )
+        guard let note = try? context.fetch(descriptor).first else { return }
+
+        note.isDeleted = true
+        note.syncStatus = .synced
+        try? context.save()
+    }
+
+    private func handleRemoteBlockInsert(_ dto: NoteBlockDTO, context: ModelContext) {
+        let noteId = UUID(uuidString: dto.note_id) ?? UUID()
+        let blockId = UUID(uuidString: dto.id) ?? UUID()
+
+        // Check if block already exists
+        let blockDescriptor = FetchDescriptor<NoteBlock>(
+            predicate: #Predicate { $0.id == blockId }
+        )
+        guard (try? context.fetch(blockDescriptor).first) == nil else { return }
+
+        // Find parent note
+        let noteDescriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.id == noteId }
+        )
+        guard let note = try? context.fetch(noteDescriptor).first else { return }
+
+        let block = dto.toNoteBlock()
+        block.note = note
+        note.blocks.append(block)
+
+        try? context.save()
+    }
+
+    private func handleRemoteBlockUpdate(_ dto: NoteBlockDTO, context: ModelContext) {
+        let blockId = UUID(uuidString: dto.id) ?? UUID()
+
+        let descriptor = FetchDescriptor<NoteBlock>(
+            predicate: #Predicate { $0.id == blockId }
+        )
+        guard let block = try? context.fetch(descriptor).first else { return }
+
+        let formatter = ISO8601DateFormatter()
+        block.content = dto.content
+        block.storagePath = dto.storage_path
+        block.position = dto.position
+        block.version = dto.version
+        block.updatedAt = formatter.date(from: dto.updated_at) ?? Date()
+        block.syncStatus = .synced
+
+        try? context.save()
+    }
+
+    private func handleRemoteBlockDelete(_ id: UUID, context: ModelContext) {
+        let descriptor = FetchDescriptor<NoteBlock>(
+            predicate: #Predicate { $0.id == id }
+        )
+        guard let block = try? context.fetch(descriptor).first else { return }
+
+        context.delete(block)
+        try? context.save()
+    }
+
+    // MARK: - History
+
+    func fetchBlockHistory(block: NoteBlock) async -> [NoteBlockHistoryDTO] {
         do {
-            guard try await localFile.hasFileChanged() else { return }
-
-            let newContent = try await localFile.readJournal()
-
-            // Only update if different
-            if newContent != content {
-                content = newContent
-                entries = MarkdownParser.parseEntries(from: content).map { $0.toJournalEntry() }
-            }
+            return try await supabase.fetchBlockHistory(blockId: block.id)
         } catch {
-            self.error = error.localizedDescription
+            print("Failed to fetch history: \(error)")
+            return []
         }
-    }
-
-    // MARK: - Helpers
-
-    private func formatTimestamp(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter.string(from: date)
     }
 }

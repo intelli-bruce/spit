@@ -4,15 +4,15 @@ import SwiftUI
 
 @Observable
 final class HomeViewModel {
-    var deletedMemo: Memo?
+    var deletedNote: Note?
     var showUndoToast = false
 
     private var undoTimer: Timer?
     private let whisperService = WhisperService()
 
-    func deleteMemo(_ memo: Memo, context: ModelContext) {
-        deletedMemo = memo
-        context.delete(memo)
+    func deleteNote(_ note: Note, context: ModelContext) {
+        deletedNote = note
+        context.delete(note)
 
         showUndoToast = true
 
@@ -23,49 +23,79 @@ final class HomeViewModel {
     }
 
     func undoDelete(context: ModelContext) {
-        guard let memo = deletedMemo else { return }
+        guard let note = deletedNote else { return }
 
         undoTimer?.invalidate()
         undoTimer = nil
 
-        context.insert(memo)
-        deletedMemo = nil
+        context.insert(note)
+        deletedNote = nil
         showUndoToast = false
     }
 
     func confirmDelete() {
-        if let memo = deletedMemo {
-            if let audioFileName = memo.audioFileName {
-                AudioRecorder.deleteAudioFile(named: audioFileName)
-            }
-            for thread in memo.threads {
-                if let audioFileName = thread.audioFileName {
-                    AudioRecorder.deleteAudioFile(named: audioFileName)
+        if let note = deletedNote {
+            // Delete local audio files
+            for block in note.blocks where block.type == .audio {
+                if let storagePath = block.storagePath, storagePath.hasPrefix("local://") {
+                    let fileName = storagePath.replacingOccurrences(of: "local://", with: "")
+                    AudioRecorder.deleteAudioFile(named: fileName)
                 }
             }
         }
 
-        deletedMemo = nil
+        deletedNote = nil
         showUndoToast = false
         undoTimer?.invalidate()
         undoTimer = nil
     }
 
-    func processSTT(for memo: Memo, context: ModelContext) async {
-        guard let audioURL = memo.audioURL else { return }
+    func processSTT(for block: NoteBlock, context: ModelContext) async {
+        guard block.type == .audio, let audioURL = block.localMediaURL else { return }
 
-        memo.sttStatus = .processing
+        block.syncStatus = .pending
 
         do {
             let text = try await whisperService.transcribe(audioURL: audioURL)
-            memo.text = text.isEmpty ? "" : text
-            memo.sttStatus = .completed
-            memo.updatedAt = Date()
+            // Create a text block with the transcribed content
+            block.content = text.isEmpty ? "" : text
+            block.updatedAt = Date()
         } catch {
             print("STT failed: \(error)")
-            memo.sttStatus = .failed
         }
 
         try? context.save()
+    }
+
+    // MARK: - Sync
+
+    func syncPendingNotes(context: ModelContext) async {
+        let pendingStatus = SyncStatus.pending
+        let descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.syncStatus == pendingStatus }
+        )
+
+        guard let pendingNotes = try? context.fetch(descriptor) else { return }
+
+        for note in pendingNotes {
+            await syncNote(note, context: context)
+        }
+    }
+
+    private func syncNote(_ note: Note, context: ModelContext) async {
+        do {
+            _ = try await SupabaseService.shared.createNote(note: note)
+            note.syncStatus = .synced
+
+            // Sync blocks
+            for block in note.blocks {
+                _ = try await SupabaseService.shared.createBlock(block: block, noteId: note.id)
+                block.syncStatus = .synced
+            }
+
+            try? context.save()
+        } catch {
+            print("Sync failed: \(error)")
+        }
     }
 }

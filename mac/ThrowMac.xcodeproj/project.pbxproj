@@ -7,59 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E37BC2BC2683CFA1A59DED2 /* JournalMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC781DD9A975D57E5AB059B0 /* JournalMarkdownParser.swift */; };
-		0F3D33C20B39680388A34A83 /* JournalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633450F0B73E2AB9EF8DBBB /* JournalListView.swift */; };
 		1076DBB3B76CE1925874231F /* VimTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B434306F2B43E356228842A /* VimTypes.swift */; };
 		34290FDB0C1829868DE88C00 /* VimEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947501AEBA77BF290004ECEC /* VimEngine.swift */; };
-		4E2B8AAC950B9E8EAC2957AB /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1DE62A655985A71E181ED /* NoteCardView.swift */; };
-		5822D74D6A94B04A3A42C17B /* JournalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A2577D5277A3664C01342 /* JournalCoordinator.swift */; };
+		4BB6777A1A6C89F070171BD3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7D2C7D88C48034BC701A4 /* Note.swift */; };
 		5882D815E374C83E710DAD74 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8617EEBA6E70D2A26927B72 /* EditorViewModel.swift */; };
-		5AAA66FBF6FB124FBA56A19A /* ConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8888630D1DA528E86DBA1406 /* ConflictResolver.swift */; };
 		61D8A70971C918E3D5F27D84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1590926E5BB4347FDB7A8 /* ContentView.swift */; };
-		68B420CDC71F7FEA5D014D07 /* DaySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06B28986CA810CE7CF32D96 /* DaySectionView.swift */; };
 		718671D1CEC68278A4E56100 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB69232F097E8E6DE08F8653 /* Config.swift */; };
+		73B0D4A7AB585BB9FA09442C /* VimTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8443CDEBACD2B5E00C7A7AE /* VimTextView.swift */; };
 		7DB30D9568D68D1DEDD8B73E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 849BED9F15CCAFCBB6F06F0F /* Supabase */; };
-		85782CC29C75493CF90EF870 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128BE8325C4DF973158B7401 /* JournalEntry.swift */; };
+		84E0A32046BB9A58A5CD51EF /* NoteBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8BE059DCACE9782FB8AD6 /* NoteBlock.swift */; };
 		87B26896EBB499135A994F18 /* VimCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7192022380E90CD15BBF402 /* VimCommands.swift */; };
-		961F105E995A18909F6364C0 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1359E679085B430617DF23F /* SidebarView.swift */; };
-		A249FC72CA5003CDC2F9D56F /* JournalNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB32959331D9D217AD71C9B0 /* JournalNote.swift */; };
+		9197D3E7A28EEBC05F0FA96B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4273A6E4367D15876C1BA0DC /* Tag.swift */; };
 		A3B8D8BF4645218980CE30FB /* VimOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F4203D739A2014DCC7EF7 /* VimOperators.swift */; };
 		AAFCE38D41DCED8DC63A5406 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCF47AAB62BDAC9DF05C2B /* SupabaseService.swift */; };
-		AB39C9D642C83B08C4926543 /* LocalFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDC663224E40A7B77D192E /* LocalFileService.swift */; };
-		B2998F21EED49F1646449420 /* MarkdownTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192000646D0F4EECCBBFA01 /* MarkdownTextView.swift */; };
 		BEB3AD04734605E909D8E42C /* ThrowMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA6DAD947E70D10466CEF28 /* ThrowMacApp.swift */; };
 		DECD45C109074E5AB174577C /* VimMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0658F7C0603BF583E10F49E /* VimMotions.swift */; };
-		E555A41339D639003E733D29 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B288007B2EC26689BEC37 /* EditorView.swift */; };
 		F174405477E560D9F9DD05F0 /* VimTextObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507599937574784AE213FE0C /* VimTextObjects.swift */; };
-		F54DBCE5E1F168CFE5B41725 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100D5F03B191FB9FFA4CDF0 /* MarkdownParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		07F1DE62A655985A71E181ED /* NoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCardView.swift; sourceTree = "<group>"; };
-		128BE8325C4DF973158B7401 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		01E8BE059DCACE9782FB8AD6 /* NoteBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBlock.swift; sourceTree = "<group>"; };
 		1FA6DAD947E70D10466CEF28 /* ThrowMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowMacApp.swift; sourceTree = "<group>"; };
+		4273A6E4367D15876C1BA0DC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		4B434306F2B43E356228842A /* VimTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTypes.swift; sourceTree = "<group>"; };
 		507599937574784AE213FE0C /* VimTextObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTextObjects.swift; sourceTree = "<group>"; };
 		5BCCF47AAB62BDAC9DF05C2B /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
-		629B288007B2EC26689BEC37 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		6B4F4203D739A2014DCC7EF7 /* VimOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimOperators.swift; sourceTree = "<group>"; };
 		7EB1590926E5BB4347FDB7A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		8888630D1DA528E86DBA1406 /* ConflictResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolver.swift; sourceTree = "<group>"; };
 		947501AEBA77BF290004ECEC /* VimEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimEngine.swift; sourceTree = "<group>"; };
-		9C5A2577D5277A3664C01342 /* JournalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCoordinator.swift; sourceTree = "<group>"; };
-		A100D5F03B191FB9FFA4CDF0 /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
-		A1359E679085B430617DF23F /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		AB69232F097E8E6DE08F8653 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		C192000646D0F4EECCBBFA01 /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextView.swift; sourceTree = "<group>"; };
-		CC781DD9A975D57E5AB059B0 /* JournalMarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMarkdownParser.swift; sourceTree = "<group>"; };
+		C8443CDEBACD2B5E00C7A7AE /* VimTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTextView.swift; sourceTree = "<group>"; };
 		D0658F7C0603BF583E10F49E /* VimMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimMotions.swift; sourceTree = "<group>"; };
-		D633450F0B73E2AB9EF8DBBB /* JournalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListView.swift; sourceTree = "<group>"; };
-		DADDC663224E40A7B77D192E /* LocalFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileService.swift; sourceTree = "<group>"; };
-		E06B28986CA810CE7CF32D96 /* DaySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySectionView.swift; sourceTree = "<group>"; };
 		E7192022380E90CD15BBF402 /* VimCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimCommands.swift; sourceTree = "<group>"; };
 		E724BA9201B928D7AF3CC881 /* ThrowMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThrowMac.entitlements; sourceTree = "<group>"; };
-		EB32959331D9D217AD71C9B0 /* JournalNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalNote.swift; sourceTree = "<group>"; };
 		ECBC8AFF39F51F3ECB22105C /* ThrowMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThrowMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1F7D2C7D88C48034BC701A4 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		F8617EEBA6E70D2A26927B72 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				D8661B2F6F71EB049D5EF2EC /* App */,
-				D078FC637E45855600232E36 /* Coordinators */,
 				537EA43C580D2D114F136013 /* Models */,
 				3074A1B3696E93D5061D0214 /* Services */,
 				E65E75F2CCA9FD72CB388BF8 /* Utilities */,
@@ -101,9 +82,6 @@
 		3074A1B3696E93D5061D0214 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CC781DD9A975D57E5AB059B0 /* JournalMarkdownParser.swift */,
-				DADDC663224E40A7B77D192E /* LocalFileService.swift */,
-				A100D5F03B191FB9FFA4CDF0 /* MarkdownParser.swift */,
 				5BCCF47AAB62BDAC9DF05C2B /* SupabaseService.swift */,
 			);
 			path = Services;
@@ -112,8 +90,9 @@
 		537EA43C580D2D114F136013 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				128BE8325C4DF973158B7401 /* JournalEntry.swift */,
-				EB32959331D9D217AD71C9B0 /* JournalNote.swift */,
+				F1F7D2C7D88C48034BC701A4 /* Note.swift */,
+				01E8BE059DCACE9782FB8AD6 /* NoteBlock.swift */,
+				4273A6E4367D15876C1BA0DC /* Tag.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,12 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB1590926E5BB4347FDB7A8 /* ContentView.swift */,
-				E06B28986CA810CE7CF32D96 /* DaySectionView.swift */,
-				629B288007B2EC26689BEC37 /* EditorView.swift */,
-				D633450F0B73E2AB9EF8DBBB /* JournalListView.swift */,
-				C192000646D0F4EECCBBFA01 /* MarkdownTextView.swift */,
-				07F1DE62A655985A71E181ED /* NoteCardView.swift */,
-				A1359E679085B430617DF23F /* SidebarView.swift */,
+				C8443CDEBACD2B5E00C7A7AE /* VimTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,14 +112,6 @@
 				F8617EEBA6E70D2A26927B72 /* EditorViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		D078FC637E45855600232E36 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				9C5A2577D5277A3664C01342 /* JournalCoordinator.swift */,
-			);
-			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		D8661B2F6F71EB049D5EF2EC /* App */ = {
@@ -161,7 +127,6 @@
 		E65E75F2CCA9FD72CB388BF8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8888630D1DA528E86DBA1406 /* ConflictResolver.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -252,28 +217,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				718671D1CEC68278A4E56100 /* Config.swift in Sources */,
-				5AAA66FBF6FB124FBA56A19A /* ConflictResolver.swift in Sources */,
 				61D8A70971C918E3D5F27D84 /* ContentView.swift in Sources */,
-				68B420CDC71F7FEA5D014D07 /* DaySectionView.swift in Sources */,
-				E555A41339D639003E733D29 /* EditorView.swift in Sources */,
 				5882D815E374C83E710DAD74 /* EditorViewModel.swift in Sources */,
-				5822D74D6A94B04A3A42C17B /* JournalCoordinator.swift in Sources */,
-				85782CC29C75493CF90EF870 /* JournalEntry.swift in Sources */,
-				0F3D33C20B39680388A34A83 /* JournalListView.swift in Sources */,
-				0E37BC2BC2683CFA1A59DED2 /* JournalMarkdownParser.swift in Sources */,
-				A249FC72CA5003CDC2F9D56F /* JournalNote.swift in Sources */,
-				AB39C9D642C83B08C4926543 /* LocalFileService.swift in Sources */,
-				F54DBCE5E1F168CFE5B41725 /* MarkdownParser.swift in Sources */,
-				B2998F21EED49F1646449420 /* MarkdownTextView.swift in Sources */,
-				4E2B8AAC950B9E8EAC2957AB /* NoteCardView.swift in Sources */,
-				961F105E995A18909F6364C0 /* SidebarView.swift in Sources */,
+				4BB6777A1A6C89F070171BD3 /* Note.swift in Sources */,
+				84E0A32046BB9A58A5CD51EF /* NoteBlock.swift in Sources */,
 				AAFCE38D41DCED8DC63A5406 /* SupabaseService.swift in Sources */,
+				9197D3E7A28EEBC05F0FA96B /* Tag.swift in Sources */,
 				BEB3AD04734605E909D8E42C /* ThrowMacApp.swift in Sources */,
 				87B26896EBB499135A994F18 /* VimCommands.swift in Sources */,
 				34290FDB0C1829868DE88C00 /* VimEngine.swift in Sources */,
 				DECD45C109074E5AB174577C /* VimMotions.swift in Sources */,
 				A3B8D8BF4645218980CE30FB /* VimOperators.swift in Sources */,
 				F174405477E560D9F9DD05F0 /* VimTextObjects.swift in Sources */,
+				73B0D4A7AB585BB9FA09442C /* VimTextView.swift in Sources */,
 				1076DBB3B76CE1925874231F /* VimTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

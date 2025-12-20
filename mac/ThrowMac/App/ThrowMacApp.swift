@@ -1,14 +1,31 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct ThrowMacApp: App {
-    @StateObject private var appState = AppState()
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Note.self,
+            NoteBlock.self,
+            Tag.self
+        ])
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false
+        )
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(appState)
         }
+        .modelContainer(sharedModelContainer)
         .windowStyle(.hiddenTitleBar)
         .commands {
             CommandGroup(replacing: .newItem) {
@@ -18,29 +35,31 @@ struct ThrowMacApp: App {
                 .keyboardShortcut("n", modifiers: .command)
             }
 
-            CommandGroup(after: .saveItem) {
+            CommandGroup(replacing: .saveItem) {
+                Button("Save") {
+                    NotificationCenter.default.post(name: .saveNote, object: nil)
+                }
+                .keyboardShortcut("s", modifiers: .command)
+
                 Button("Sync Now") {
-                    Task {
-                        await appState.sync()
-                    }
+                    NotificationCenter.default.post(name: .syncNow, object: nil)
                 }
                 .keyboardShortcut("s", modifiers: [.command, .shift])
+            }
+
+            CommandGroup(after: .toolbar) {
+                Button("Refresh") {
+                    NotificationCenter.default.post(name: .refreshNotes, object: nil)
+                }
+                .keyboardShortcut("r", modifiers: .command)
             }
         }
     }
 }
 
-@MainActor
-class AppState: ObservableObject {
-    @Published var isSyncing = false
-    @Published var lastSyncTime: Date?
-    @Published var syncError: String?
-
-    func sync() async {
-        isSyncing = true
-        defer { isSyncing = false }
-
-        // TODO: Implement sync
-        lastSyncTime = Date()
-    }
+extension Notification.Name {
+    static let addNewNote = Notification.Name("addNewNote")
+    static let saveNote = Notification.Name("saveNote")
+    static let syncNow = Notification.Name("syncNow")
+    static let refreshNotes = Notification.Name("refreshNotes")
 }

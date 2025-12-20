@@ -13,54 +13,378 @@ actor SupabaseService {
         )
     }
 
-    // MARK: - Journal Entries
+    // MARK: - Notes
 
-    func appendToJournal(content: String) async throws {
-        let entry = JournalEntryDTO(
-            content: content,
-            timestamp: ISO8601DateFormatter().string(from: Date()),
-            source: "ios",
-            device_id: Config.deviceId
-        )
-
-        try await client.from("journal_entries")
-            .insert(entry)
+    func createNote(note: Note) async throws -> NoteDTO {
+        let dto = NoteDTO(from: note)
+        let response: NoteDTO = try await client.from("notes")
+            .insert(dto)
+            .select()
+            .single()
             .execute()
+            .value
+        return response
     }
 
-    func fetchEntries(limit: Int = 50) async throws -> [JournalEntryDTO] {
-        let response: [JournalEntryDTO] = try await client.from("journal_entries")
+    func fetchNotes(limit: Int = 50, includeDeleted: Bool = false) async throws -> [NoteDTO] {
+        var query = client.from("notes")
             .select()
-            .eq("is_deleted", value: false)
-            .order("timestamp", ascending: false)
+
+        if !includeDeleted {
+            query = query.eq("is_deleted", value: false)
+        }
+
+        let response: [NoteDTO] = try await query
+            .order("created_at", ascending: false)
             .limit(limit)
             .execute()
             .value
 
         return response
     }
+
+    func fetchNote(id: UUID) async throws -> NoteDTO? {
+        let response: [NoteDTO] = try await client.from("notes")
+            .select()
+            .eq("id", value: id.uuidString)
+            .limit(1)
+            .execute()
+            .value
+
+        return response.first
+    }
+
+    func updateNote(id: UUID, isDeleted: Bool? = nil) async throws {
+        var updates: [String: AnyEncodable] = [:]
+
+        if let isDeleted = isDeleted {
+            updates["is_deleted"] = AnyEncodable(isDeleted)
+        }
+
+        guard !updates.isEmpty else { return }
+
+        try await client.from("notes")
+            .update(updates)
+            .eq("id", value: id.uuidString)
+            .execute()
+    }
+
+    func deleteNote(id: UUID) async throws {
+        try await updateNote(id: id, isDeleted: true)
+    }
+
+    // MARK: - Note Blocks
+
+    func createBlock(block: NoteBlock, noteId: UUID) async throws -> NoteBlockDTO {
+        let dto = NoteBlockDTO(from: block, noteId: noteId)
+        let response: NoteBlockDTO = try await client.from("note_blocks")
+            .insert(dto)
+            .select()
+            .single()
+            .execute()
+            .value
+        return response
+    }
+
+    func fetchBlocks(noteId: UUID) async throws -> [NoteBlockDTO] {
+        let response: [NoteBlockDTO] = try await client.from("note_blocks")
+            .select()
+            .eq("note_id", value: noteId.uuidString)
+            .order("position", ascending: true)
+            .execute()
+            .value
+
+        return response
+    }
+
+    func updateBlock(id: UUID, content: String? = nil, storagePath: String? = nil, position: Int? = nil) async throws {
+        var updates: [String: AnyEncodable] = [:]
+
+        if let content = content {
+            updates["content"] = AnyEncodable(content)
+        }
+        if let storagePath = storagePath {
+            updates["storage_path"] = AnyEncodable(storagePath)
+        }
+        if let position = position {
+            updates["position"] = AnyEncodable(position)
+        }
+
+        guard !updates.isEmpty else { return }
+
+        try await client.from("note_blocks")
+            .update(updates)
+            .eq("id", value: id.uuidString)
+            .execute()
+    }
+
+    func deleteBlock(id: UUID) async throws {
+        try await client.from("note_blocks")
+            .delete()
+            .eq("id", value: id.uuidString)
+            .execute()
+    }
+
+    // MARK: - Tags
+
+    func fetchTags() async throws -> [TagDTO] {
+        let response: [TagDTO] = try await client.from("tags")
+            .select()
+            .order("name", ascending: true)
+            .execute()
+            .value
+
+        return response
+    }
+
+    func createTag(name: String) async throws -> TagDTO {
+        let dto = TagDTO(name: name)
+        let response: TagDTO = try await client.from("tags")
+            .insert(dto)
+            .select()
+            .single()
+            .execute()
+            .value
+        return response
+    }
+
+    func findOrCreateTag(name: String) async throws -> TagDTO {
+        // Try to find existing tag
+        let existing: [TagDTO] = try await client.from("tags")
+            .select()
+            .eq("name", value: name)
+            .limit(1)
+            .execute()
+            .value
+
+        if let tag = existing.first {
+            return tag
+        }
+
+        // Create new tag
+        return try await createTag(name: name)
+    }
+
+    // MARK: - Note Tags
+
+    func addTagToNote(noteId: UUID, tagId: UUID) async throws {
+        let dto = NoteTagDTO(note_id: noteId.uuidString, tag_id: tagId.uuidString)
+        try await client.from("note_tags")
+            .insert(dto)
+            .execute()
+    }
+
+    func removeTagFromNote(noteId: UUID, tagId: UUID) async throws {
+        try await client.from("note_tags")
+            .delete()
+            .eq("note_id", value: noteId.uuidString)
+            .eq("tag_id", value: tagId.uuidString)
+            .execute()
+    }
+
+    func fetchNoteTags(noteId: UUID) async throws -> [TagDTO] {
+        let response: [NoteTagWithTag] = try await client.from("note_tags")
+            .select("tag_id, tags(*)")
+            .eq("note_id", value: noteId.uuidString)
+            .execute()
+            .value
+
+        return response.compactMap { $0.tags }
+    }
+
+    // MARK: - Storage
+
+    func uploadMedia(data: Data, path: String, contentType: String) async throws -> String {
+        try await client.storage
+            .from("throw-media")
+            .upload(path: path, file: data, options: FileOptions(contentType: contentType))
+
+        return path
+    }
+
+    func downloadMedia(path: String) async throws -> Data {
+        try await client.storage
+            .from("throw-media")
+            .download(path: path)
+    }
+
+    func deleteMedia(path: String) async throws {
+        try await client.storage
+            .from("throw-media")
+            .remove(paths: [path])
+    }
+
+    func getPublicURL(path: String) -> URL? {
+        try? client.storage
+            .from("throw-media")
+            .getPublicURL(path: path)
+    }
 }
 
-// MARK: - DTO
+// MARK: - DTOs
 
-struct JournalEntryDTO: Codable {
-    var id: String?
-    let content: String
-    let timestamp: String
+struct NoteDTO: Codable {
+    let id: String
+    let created_at: String
+    let updated_at: String
     let source: String
     let device_id: String?
+    let is_deleted: Bool
 
     init(
-        id: String? = nil,
-        content: String,
-        timestamp: String,
-        source: String,
-        device_id: String? = nil
+        id: String = UUID().uuidString,
+        created_at: String = ISO8601DateFormatter().string(from: Date()),
+        updated_at: String = ISO8601DateFormatter().string(from: Date()),
+        source: String = "ios",
+        device_id: String? = Config.deviceId,
+        is_deleted: Bool = false
     ) {
         self.id = id
-        self.content = content
-        self.timestamp = timestamp
+        self.created_at = created_at
+        self.updated_at = updated_at
         self.source = source
         self.device_id = device_id
+        self.is_deleted = is_deleted
+    }
+
+    init(from note: Note) {
+        let formatter = ISO8601DateFormatter()
+        self.id = note.id.uuidString
+        self.created_at = formatter.string(from: note.createdAt)
+        self.updated_at = formatter.string(from: note.updatedAt)
+        self.source = note.source
+        self.device_id = note.deviceId
+        self.is_deleted = note.isDeleted
+    }
+
+    func toNote() -> Note {
+        let formatter = ISO8601DateFormatter()
+        return Note(
+            id: UUID(uuidString: id) ?? UUID(),
+            createdAt: formatter.date(from: created_at) ?? Date(),
+            updatedAt: formatter.date(from: updated_at) ?? Date(),
+            source: source,
+            deviceId: device_id,
+            isDeleted: is_deleted,
+            syncStatus: .synced
+        )
+    }
+}
+
+struct NoteBlockDTO: Codable {
+    let id: String
+    let note_id: String
+    let parent_id: String?
+    let type: String
+    let content: String?
+    let storage_path: String?
+    let position: Int
+    let created_at: String
+    let updated_at: String
+    let version: Int
+
+    init(
+        id: String = UUID().uuidString,
+        note_id: String,
+        parent_id: String? = nil,
+        type: String = "text",
+        content: String? = nil,
+        storage_path: String? = nil,
+        position: Int = 0,
+        created_at: String = ISO8601DateFormatter().string(from: Date()),
+        updated_at: String = ISO8601DateFormatter().string(from: Date()),
+        version: Int = 1
+    ) {
+        self.id = id
+        self.note_id = note_id
+        self.parent_id = parent_id
+        self.type = type
+        self.content = content
+        self.storage_path = storage_path
+        self.position = position
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.version = version
+    }
+
+    init(from block: NoteBlock, noteId: UUID) {
+        let formatter = ISO8601DateFormatter()
+        self.id = block.id.uuidString
+        self.note_id = noteId.uuidString
+        self.parent_id = block.parentBlock?.id.uuidString
+        self.type = block.type.rawValue
+        self.content = block.content
+        self.storage_path = block.storagePath
+        self.position = block.position
+        self.created_at = formatter.string(from: block.createdAt)
+        self.updated_at = formatter.string(from: block.updatedAt)
+        self.version = block.version
+    }
+
+    func toNoteBlock() -> NoteBlock {
+        let formatter = ISO8601DateFormatter()
+        return NoteBlock(
+            id: UUID(uuidString: id) ?? UUID(),
+            type: BlockType(rawValue: type) ?? .text,
+            content: content,
+            storagePath: storage_path,
+            position: position,
+            createdAt: formatter.date(from: created_at) ?? Date(),
+            updatedAt: formatter.date(from: updated_at) ?? Date(),
+            version: version,
+            syncStatus: .synced
+        )
+    }
+}
+
+struct TagDTO: Codable {
+    let id: String
+    let name: String
+    let created_at: String
+
+    init(
+        id: String = UUID().uuidString,
+        name: String,
+        created_at: String = ISO8601DateFormatter().string(from: Date())
+    ) {
+        self.id = id
+        self.name = name
+        self.created_at = created_at
+    }
+
+    func toTag() -> Tag {
+        let formatter = ISO8601DateFormatter()
+        return Tag(
+            id: UUID(uuidString: id) ?? UUID(),
+            name: name,
+            createdAt: formatter.date(from: created_at) ?? Date(),
+            syncStatus: .synced
+        )
+    }
+}
+
+struct NoteTagDTO: Codable {
+    let note_id: String
+    let tag_id: String
+}
+
+struct NoteTagWithTag: Codable {
+    let tag_id: String
+    let tags: TagDTO?
+}
+
+// MARK: - Helper
+
+struct AnyEncodable: Encodable {
+    private let encode: (Encoder) throws -> Void
+
+    init<T: Encodable>(_ value: T) {
+        encode = { encoder in
+            try value.encode(to: encoder)
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        try encode(encoder)
     }
 }

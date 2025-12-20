@@ -8,8 +8,9 @@ struct ThrowApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Memo.self,
-            ThreadItem.self
+            Note.self,
+            NoteBlock.self,
+            Tag.self
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,

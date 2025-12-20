@@ -5,6 +5,7 @@ import SwiftUI
 @Observable
 final class RecordingViewModel {
     let audioRecorder = AudioRecorder()
+    private let whisperService = WhisperService()
 
     var isRecording: Bool {
         audioRecorder.isRecording
@@ -34,7 +35,7 @@ final class RecordingViewModel {
         await audioRecorder.requestPermission()
     }
 
-    func toggleRecording(context: ModelContext, onComplete: @escaping (Memo) -> Void) {
+    func toggleRecording(context: ModelContext, onComplete: @escaping (Note) -> Void) {
         if isRecording {
             stopRecording(context: context, onComplete: onComplete)
         } else {
@@ -52,24 +53,73 @@ final class RecordingViewModel {
         }
     }
 
-    func stopRecording(context: ModelContext, onComplete: @escaping (Memo) -> Void) {
+    func stopRecording(context: ModelContext, onComplete: @escaping (Note) -> Void) {
         guard let audioURL = audioRecorder.stopRecording() else { return }
 
         HapticManager.recordingStop()
 
-        let memo = Memo(
-            text: "",
-            audioFileName: audioURL.lastPathComponent,
-            sttStatus: .pending
+        // Create note with audio block
+        let note = Note()
+
+        let audioBlock = NoteBlock(
+            note: note,
+            type: .audio,
+            storagePath: "local://\(audioURL.lastPathComponent)",
+            position: 0
         )
 
-        context.insert(memo)
+        note.blocks.append(audioBlock)
+
+        context.insert(note)
         try? context.save()
 
-        onComplete(memo)
+        onComplete(note)
+
+        // Process STT in background
+        Task {
+            await processSTT(for: audioBlock, context: context)
+        }
     }
 
     func cancelRecording() {
         audioRecorder.cancelRecording()
+    }
+
+    // MARK: - Text Note
+
+    func createTextNote(text: String, context: ModelContext) -> Note? {
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedText.isEmpty else { return nil }
+
+        let note = Note()
+
+        let textBlock = NoteBlock(
+            note: note,
+            type: .text,
+            content: trimmedText,
+            position: 0
+        )
+
+        note.blocks.append(textBlock)
+
+        context.insert(note)
+        try? context.save()
+
+        return note
+    }
+
+    // MARK: - STT
+
+    private func processSTT(for block: NoteBlock, context: ModelContext) async {
+        guard block.type == .audio, let audioURL = block.localMediaURL else { return }
+
+        do {
+            let text = try await whisperService.transcribe(audioURL: audioURL)
+            block.content = text.isEmpty ? "" : text
+            block.updatedAt = Date()
+            try? context.save()
+        } catch {
+            print("STT failed: \(error)")
+        }
     }
 }
