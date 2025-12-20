@@ -1,4 +1,4 @@
-name: JournalMac
+name: DropsMac
 
 options:
   bundleIdPrefix: com.intellieffect
@@ -18,19 +18,15 @@ packages:
   Supabase:
     url: https://github.com/supabase/supabase-swift
     from: "2.0.0"
-  MessagePack:
-    url: https://github.com/a2/MessagePack.swift
-    from: "4.0.0"
 
 targets:
-  JournalMac:
+  DropsMac:
     type: application
     platform: macOS
     sources:
-      - JournalMac
+      - DropsMac
     dependencies:
       - package: Supabase
-      - package: MessagePack
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops.mac
@@ -40,7 +36,7 @@ targets:
         INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © 2025 IntelliEffect. All rights reserved."
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.productivity"
     entitlements:
-      path: JournalMac/App/JournalMac.entitlements
+      path: DropsMac/App/DropsMac.entitlements
       properties:
         com.apple.security.app-sandbox: false
         com.apple.security.network.client: true

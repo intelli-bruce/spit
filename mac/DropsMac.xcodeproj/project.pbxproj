@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03F2F9EE9E39477675271F51 /* VimCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C472D2B9E72E7963E072C65 /* VimCommands.swift */; };
+		0C9F42F2B8D2944D3D87A4C3 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132E6C45A1ADA6F0A25EE03 /* MarkdownParser.swift */; };
+		17FE23A07B7A439E7958F5FE /* VimTextObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0EC3288DD2FA8F68531F83 /* VimTextObjects.swift */; };
+		1EA606186CA89F44453EB435 /* JournalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2194C82DC444A1AF01417 /* JournalCoordinator.swift */; };
+		3A16140F8F93B053175333FE /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CB763A16474CF0290270B7 /* NoteCardView.swift */; };
+		3A76F1B73B69D3BE3B7CEE8F /* VimTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9683A5C9DF8B6FB40D7BE660 /* VimTypes.swift */; };
+		49F005680FF8279C36BDF388 /* ConflictResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B54FA17964DB26D5D620E /* ConflictResolver.swift */; };
+		666E97E777013E08AF016F60 /* JournalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A434041DD4F859B5EE8A2 /* JournalListView.swift */; };
+		7C3DF28AE66091EB2AA9B0B6 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A38A76ECB524BC03F0AA79 /* SidebarView.swift */; };
+		90E3E4DF2BCAC027A5F81E01 /* VimEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9393A20234DFBF14CFEBF11 /* VimEngine.swift */; };
+		9263C5454D481DB8295CE7DA /* DaySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD13312D799B528DE7355E /* DaySectionView.swift */; };
+		9665D1240E7430A5A08B40AE /* VimMotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EA83F006883DD475BC941 /* VimMotions.swift */; };
+		9AA243EB732B62C39C871D80 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7B600B2D1ED2160E7E213E08 /* Supabase */; };
+		9DE2CF5D8F9161346BAFA4FF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182410BAA7BCFCC2E54F733A /* Config.swift */; };
+		9E92A5EA78B766D9B202EF8B /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D76398DB93885328B7643B /* JournalEntry.swift */; };
+		AF00EE646C60C5FB7464ACF6 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE17EEB42D1D49DFD2B80F2 /* EditorView.swift */; };
+		B249260980503FA839235DD4 /* JournalMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B01D28CB0BE21D04415EDC /* JournalMarkdownParser.swift */; };
+		C0A971E0C9384D87C5967BDB /* VimOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BE57807F3F4736821D720 /* VimOperators.swift */; };
+		C3F7BFBD3F8478BCCF88E71D /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567E1088FB609780099D2F4 /* EditorViewModel.swift */; };
+		C8CD8FE16F95EED0B010CF1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAAD26C26549802F04EE21 /* ContentView.swift */; };
+		D184441299A5007567BE9D2B /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951827BCB6B676508359E676 /* SupabaseService.swift */; };
+		D9D5E2C30F70391E1FF18CCB /* JournalNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CE605E8C8DE91E52843CC /* JournalNote.swift */; };
+		DD437EC2A60CE23BFF7B1D9D /* MarkdownTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF58C263A54CCAB2A5A8D6C /* MarkdownTextView.swift */; };
+		F0E8F369F31889029E641A6A /* DropsMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90979A62ACE91C7FD82C5DD7 /* DropsMacApp.swift */; };
+		F6F47411C3599ADA8AFA9789 /* LocalFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE90B0FBE714D5C2FEE4999 /* LocalFileService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02D76398DB93885328B7643B /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		07A38A76ECB524BC03F0AA79 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		0AE17EEB42D1D49DFD2B80F2 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		11DAAD26C26549802F04EE21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		13AD823C7720D85F79161DBB /* DropsMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropsMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		182410BAA7BCFCC2E54F733A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		45E2194C82DC444A1AF01417 /* JournalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCoordinator.swift; sourceTree = "<group>"; };
+		4E0EC3288DD2FA8F68531F83 /* VimTextObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTextObjects.swift; sourceTree = "<group>"; };
+		4E7B54FA17964DB26D5D620E /* ConflictResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResolver.swift; sourceTree = "<group>"; };
+		6CF58C263A54CCAB2A5A8D6C /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextView.swift; sourceTree = "<group>"; };
+		7132E6C45A1ADA6F0A25EE03 /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
+		84B01D28CB0BE21D04415EDC /* JournalMarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMarkdownParser.swift; sourceTree = "<group>"; };
+		8C0EA83F006883DD475BC941 /* VimMotions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimMotions.swift; sourceTree = "<group>"; };
+		8C472D2B9E72E7963E072C65 /* VimCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimCommands.swift; sourceTree = "<group>"; };
+		8CE90B0FBE714D5C2FEE4999 /* LocalFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileService.swift; sourceTree = "<group>"; };
+		90979A62ACE91C7FD82C5DD7 /* DropsMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropsMacApp.swift; sourceTree = "<group>"; };
+		951827BCB6B676508359E676 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
+		9683A5C9DF8B6FB40D7BE660 /* VimTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimTypes.swift; sourceTree = "<group>"; };
+		BCDD13312D799B528DE7355E /* DaySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySectionView.swift; sourceTree = "<group>"; };
+		C64A434041DD4F859B5EE8A2 /* JournalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListView.swift; sourceTree = "<group>"; };
+		C69CE605E8C8DE91E52843CC /* JournalNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalNote.swift; sourceTree = "<group>"; };
+		D8E5948A6F1EAED10801BCDB /* DropsMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DropsMac.entitlements; sourceTree = "<group>"; };
+		D9393A20234DFBF14CFEBF11 /* VimEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimEngine.swift; sourceTree = "<group>"; };
+		E8CB763A16474CF0290270B7 /* NoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCardView.swift; sourceTree = "<group>"; };
+		F567E1088FB609780099D2F4 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		F95BE57807F3F4736821D720 /* VimOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VimOperators.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F41EA7D784C2F6104F715162 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AA243EB732B62C39C871D80 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15F3FABED9CADFCF5F4D65C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11DAAD26C26549802F04EE21 /* ContentView.swift */,
+				BCDD13312D799B528DE7355E /* DaySectionView.swift */,
+				0AE17EEB42D1D49DFD2B80F2 /* EditorView.swift */,
+				C64A434041DD4F859B5EE8A2 /* JournalListView.swift */,
+				6CF58C263A54CCAB2A5A8D6C /* MarkdownTextView.swift */,
+				E8CB763A16474CF0290270B7 /* NoteCardView.swift */,
+				07A38A76ECB524BC03F0AA79 /* SidebarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19AC696358DA13E40C74AA91 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02D76398DB93885328B7643B /* JournalEntry.swift */,
+				C69CE605E8C8DE91E52843CC /* JournalNote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		24484D01F55B9096795A1B14 /* DropsMac */ = {
+			isa = PBXGroup;
+			children = (
+				EE37C0A0D4EA9FB7E3672CB4 /* App */,
+				798E70C1087FEB2D65D80618 /* Coordinators */,
+				19AC696358DA13E40C74AA91 /* Models */,
+				3E1DF1EF2E0A509F67813C34 /* Services */,
+				8DFBC480F297BC1E1725E295 /* Utilities */,
+				96CA5AABD448E99C2F49C156 /* ViewModels */,
+				15F3FABED9CADFCF5F4D65C9 /* Views */,
+				2E6301A7D7AC496B7E2B5DFE /* Vim */,
+			);
+			path = DropsMac;
+			sourceTree = "<group>";
+		};
+		2E6301A7D7AC496B7E2B5DFE /* Vim */ = {
+			isa = PBXGroup;
+			children = (
+				8C472D2B9E72E7963E072C65 /* VimCommands.swift */,
+				D9393A20234DFBF14CFEBF11 /* VimEngine.swift */,
+				8C0EA83F006883DD475BC941 /* VimMotions.swift */,
+				F95BE57807F3F4736821D720 /* VimOperators.swift */,
+				4E0EC3288DD2FA8F68531F83 /* VimTextObjects.swift */,
+				9683A5C9DF8B6FB40D7BE660 /* VimTypes.swift */,
+			);
+			path = Vim;
+			sourceTree = "<group>";
+		};
+		3E1DF1EF2E0A509F67813C34 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84B01D28CB0BE21D04415EDC /* JournalMarkdownParser.swift */,
+				8CE90B0FBE714D5C2FEE4999 /* LocalFileService.swift */,
+				7132E6C45A1ADA6F0A25EE03 /* MarkdownParser.swift */,
+				951827BCB6B676508359E676 /* SupabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		798E70C1087FEB2D65D80618 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				45E2194C82DC444A1AF01417 /* JournalCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		8DFBC480F297BC1E1725E295 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4E7B54FA17964DB26D5D620E /* ConflictResolver.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		96CA5AABD448E99C2F49C156 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F567E1088FB609780099D2F4 /* EditorViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C2390F16558DEB666747EA48 = {
+			isa = PBXGroup;
+			children = (
+				24484D01F55B9096795A1B14 /* DropsMac */,
+				FDA165E6EBF04139FB65B2A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE37C0A0D4EA9FB7E3672CB4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				182410BAA7BCFCC2E54F733A /* Config.swift */,
+				D8E5948A6F1EAED10801BCDB /* DropsMac.entitlements */,
+				90979A62ACE91C7FD82C5DD7 /* DropsMacApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FDA165E6EBF04139FB65B2A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13AD823C7720D85F79161DBB /* DropsMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8A74E7571017822F4FD8BDE /* DropsMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 232D612178190281AC7F627C /* Build configuration list for PBXNativeTarget "DropsMac" */;
+			buildPhases = (
+				0C329DFB52FD49CAAD270CC6 /* Sources */,
+				F41EA7D784C2F6104F715162 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropsMac;
+			packageProductDependencies = (
+				7B600B2D1ED2160E7E213E08 /* Supabase */,
+			);
+			productName = DropsMac;
+			productReference = 13AD823C7720D85F79161DBB /* DropsMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43174587DF921EDADD0693CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					E8A74E7571017822F4FD8BDE = {
+						DevelopmentTeam = J2Y925QHNV;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 151515DA961B8A84B87848A1 /* Build configuration list for PBXProject "DropsMac" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C2390F16558DEB666747EA48;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				626F5F71873AC1620BF5CFA4 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8A74E7571017822F4FD8BDE /* DropsMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0C329DFB52FD49CAAD270CC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DE2CF5D8F9161346BAFA4FF /* Config.swift in Sources */,
+				49F005680FF8279C36BDF388 /* ConflictResolver.swift in Sources */,
+				C8CD8FE16F95EED0B010CF1C /* ContentView.swift in Sources */,
+				9263C5454D481DB8295CE7DA /* DaySectionView.swift in Sources */,
+				F0E8F369F31889029E641A6A /* DropsMacApp.swift in Sources */,
+				AF00EE646C60C5FB7464ACF6 /* EditorView.swift in Sources */,
+				C3F7BFBD3F8478BCCF88E71D /* EditorViewModel.swift in Sources */,
+				1EA606186CA89F44453EB435 /* JournalCoordinator.swift in Sources */,
+				9E92A5EA78B766D9B202EF8B /* JournalEntry.swift in Sources */,
+				666E97E777013E08AF016F60 /* JournalListView.swift in Sources */,
+				B249260980503FA839235DD4 /* JournalMarkdownParser.swift in Sources */,
+				D9D5E2C30F70391E1FF18CCB /* JournalNote.swift in Sources */,
+				F6F47411C3599ADA8AFA9789 /* LocalFileService.swift in Sources */,
+				0C9F42F2B8D2944D3D87A4C3 /* MarkdownParser.swift in Sources */,
+				DD437EC2A60CE23BFF7B1D9D /* MarkdownTextView.swift in Sources */,
+				3A16140F8F93B053175333FE /* NoteCardView.swift in Sources */,
+				7C3DF28AE66091EB2AA9B0B6 /* SidebarView.swift in Sources */,
+				D184441299A5007567BE9D2B /* SupabaseService.swift in Sources */,
+				03F2F9EE9E39477675271F51 /* VimCommands.swift in Sources */,
+				90E3E4DF2BCAC027A5F81E01 /* VimEngine.swift in Sources */,
+				9665D1240E7430A5A08B40AE /* VimMotions.swift in Sources */,
+				C0A971E0C9384D87C5967BDB /* VimOperators.swift in Sources */,
+				17FE23A07B7A439E7958F5FE /* VimTextObjects.swift in Sources */,
+				3A76F1B73B69D3BE3B7CEE8F /* VimTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		29C54A22A90DB63F8071D2AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = J2Y925QHNV;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		C889F70AA82B413D5B22F5EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = J2Y925QHNV;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C955C7E54638373EFB260E21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DropsMac/App/DropsMac.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Drops;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 IntelliEffect. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.mac;
+				PRODUCT_NAME = Drops;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4E3F5BF28A06D7EFA934AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DropsMac/App/DropsMac.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Drops;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 IntelliEffect. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellieffect.drops.mac;
+				PRODUCT_NAME = Drops;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		151515DA961B8A84B87848A1 /* Build configuration list for PBXProject "DropsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C889F70AA82B413D5B22F5EE /* Debug */,
+				29C54A22A90DB63F8071D2AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		232D612178190281AC7F627C /* Build configuration list for PBXNativeTarget "DropsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C955C7E54638373EFB260E21 /* Debug */,
+				E4E3F5BF28A06D7EFA934AD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		626F5F71873AC1620BF5CFA4 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7B600B2D1ED2160E7E213E08 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 626F5F71873AC1620BF5CFA4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 43174587DF921EDADD0693CF /* Project object */;
+}

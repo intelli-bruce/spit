@@ -47,10 +47,11 @@ struct MarkdownParser {
 
         let content = contentLines.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
 
-        guard !content.isEmpty else { return nil }
+        // Only include entries with valid timestamp headers
+        guard let ts = timestamp else { return nil }
 
         return ParsedEntry(
-            timestamp: timestamp ?? Date(),
+            timestamp: ts,
             content: content,
             rawSection: section
         )

@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct JournalMacApp: App {
+struct DropsMacApp: App {
     @StateObject private var appState = AppState()
 
     var body: some Scene {
@@ -12,8 +12,8 @@ struct JournalMacApp: App {
         .windowStyle(.hiddenTitleBar)
         .commands {
             CommandGroup(replacing: .newItem) {
-                Button("New Entry") {
-                    appState.addNewEntry()
+                Button("New Note") {
+                    NotificationCenter.default.post(name: .addNewNote, object: nil)
                 }
                 .keyboardShortcut("n", modifiers: .command)
             }
@@ -36,22 +36,11 @@ class AppState: ObservableObject {
     @Published var lastSyncTime: Date?
     @Published var syncError: String?
 
-    private let editorViewModel = EditorViewModel()
-
-    func addNewEntry() {
-        editorViewModel.addNewEntry()
-    }
-
     func sync() async {
         isSyncing = true
         defer { isSyncing = false }
 
-        do {
-            try await editorViewModel.syncWithSupabase()
-            lastSyncTime = Date()
-            syncError = nil
-        } catch {
-            syncError = error.localizedDescription
-        }
+        // TODO: Implement sync
+        lastSyncTime = Date()
     }
 }
