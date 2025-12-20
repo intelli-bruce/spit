@@ -101,7 +101,7 @@ struct HomeView: View {
             .font(.subheadline.weight(.semibold))
         }
         .padding()
-        .glassEffect()
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal)
     }
 

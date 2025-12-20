@@ -45,7 +45,7 @@ struct InputBar: View {
                             .font(.title2)
                             .foregroundStyle(.white)
                     }
-                    .glassEffect(.regular.tint(.accentColor))
+                    .shadow(color: .accentColor.opacity(0.3), radius: 8)
                 }
             } else {
                 Button {
@@ -60,7 +60,7 @@ struct InputBar: View {
                             .font(.title2.weight(.semibold))
                             .foregroundStyle(.white)
                     }
-                    .glassEffect(.regular.tint(.accentColor))
+                    .shadow(color: .accentColor.opacity(0.3), radius: 8)
                 }
             }
         }
@@ -104,7 +104,7 @@ struct InputBar: View {
                             .fill(.white)
                             .frame(width: 20, height: 20)
                     }
-                    .glassEffect(.regular.tint(.red))
+                    .shadow(color: .red.opacity(0.3), radius: 8)
                 }
             }
         }

@@ -50,10 +50,10 @@ struct OnboardingView: View {
                 .foregroundStyle(Color.accentColor)
                 .symbolEffect(.pulse)
                 .padding(30)
-                .glassEffect(.regular.tint(.accentColor))
+                .background(.ultraThinMaterial, in: Circle())
 
             VStack(spacing: 12) {
-                Text("Drops")
+                Text("Throw")
                     .font(.largeTitle.weight(.bold))
 
                 Text("생각을 뱉어내세요")
@@ -79,7 +79,7 @@ struct OnboardingView: View {
                 .font(.system(size: 80))
                 .foregroundStyle(Color.accentColor)
                 .padding(30)
-                .glassEffect(.regular.tint(.accentColor))
+                .background(.ultraThinMaterial, in: Circle())
 
             VStack(spacing: 12) {
                 Text("마이크 권한")
@@ -97,7 +97,7 @@ struct OnboardingView: View {
                 featureRow(icon: "hand.raised", text: "언제든 설정에서 변경 가능합니다")
             }
             .padding()
-            .glassEffect()
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
             .padding(.top, 20)
 
             Spacer()
@@ -137,7 +137,7 @@ struct OnboardingView: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .glassEffect(.regular.tint(.accentColor))
+                .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
         }
     }
 

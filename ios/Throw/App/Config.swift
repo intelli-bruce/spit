@@ -18,7 +18,7 @@ enum Config {
     static let audioChannels: Int = 1
 
     // MARK: - App
-    static let appGroupIdentifier = "group.com.intellieffect.drops"
+    static let appGroupIdentifier = "group.com.intellieffect.throw"
 
     // MARK: - Device
     static var deviceId: String {

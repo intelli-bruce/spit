@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct DropsApp: App {
+struct ThrowApp: App {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var shouldStartRecording = false
 
@@ -40,7 +40,7 @@ struct DropsApp: App {
     }
 
     private func handleURL(_ url: URL) {
-        guard url.scheme == "drops" else { return }
+        guard url.scheme == "throw" else { return }
 
         switch url.host {
         case "record":

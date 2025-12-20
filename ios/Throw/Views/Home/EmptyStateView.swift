@@ -7,7 +7,7 @@ struct EmptyStateView: View {
                 .font(.system(size: 60))
                 .foregroundStyle(.secondary)
                 .padding(24)
-                .glassEffect()
+                .background(.ultraThinMaterial, in: Circle())
 
             VStack(spacing: 8) {
                 Text("메모가 없습니다")

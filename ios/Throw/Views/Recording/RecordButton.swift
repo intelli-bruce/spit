@@ -33,7 +33,7 @@ struct RecordButton: View {
                             .foregroundStyle(.white)
                     }
                 }
-                .glassEffect(.regular.tint(viewModel.isRecording ? .red : .accentColor))
+                .shadow(color: (viewModel.isRecording ? Color.red : Color.accentColor).opacity(0.3), radius: 8)
                 .shadow(color: .black.opacity(0.15), radius: 12, y: 6)
             }
             .buttonStyle(.plain)
@@ -62,7 +62,7 @@ struct RecordButton: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
-        .glassEffect()
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
         .transition(.scale.combined(with: .opacity))
     }
 

@@ -1,28 +1,28 @@
 import WidgetKit
 import SwiftUI
 
-struct DropsWidgetEntry: TimelineEntry {
+struct ThrowWidgetEntry: TimelineEntry {
     let date: Date
 }
 
-struct DropsWidgetProvider: TimelineProvider {
-    func placeholder(in context: Context) -> DropsWidgetEntry {
-        DropsWidgetEntry(date: Date())
+struct ThrowWidgetProvider: TimelineProvider {
+    func placeholder(in context: Context) -> ThrowWidgetEntry {
+        ThrowWidgetEntry(date: Date())
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (DropsWidgetEntry) -> Void) {
-        completion(DropsWidgetEntry(date: Date()))
+    func getSnapshot(in context: Context, completion: @escaping (ThrowWidgetEntry) -> Void) {
+        completion(ThrowWidgetEntry(date: Date()))
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<DropsWidgetEntry>) -> Void) {
-        let entry = DropsWidgetEntry(date: Date())
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ThrowWidgetEntry>) -> Void) {
+        let entry = ThrowWidgetEntry(date: Date())
         let timeline = Timeline(entries: [entry], policy: .never)
         completion(timeline)
     }
 }
 
-struct DropsWidgetEntryView: View {
-    var entry: DropsWidgetProvider.Entry
+struct ThrowWidgetEntryView: View {
+    var entry: ThrowWidgetProvider.Entry
     @Environment(\.widgetFamily) var family
 
     var body: some View {
@@ -42,7 +42,7 @@ struct DropsWidgetEntryView: View {
             Image(systemName: "mic.fill")
                 .font(.title2)
         }
-        .widgetURL(URL(string: "drops://record"))
+        .widgetURL(URL(string: "throw://record"))
     }
 
     private var smallWidgetView: some View {
@@ -55,37 +55,37 @@ struct DropsWidgetEntryView: View {
                     .font(.largeTitle)
                     .foregroundStyle(.white)
 
-                Text("Drops")
+                Text("Throw")
                     .font(.headline)
                     .foregroundStyle(.white)
             }
         }
-        .widgetURL(URL(string: "drops://record"))
+        .widgetURL(URL(string: "throw://record"))
     }
 }
 
-struct DropsWidget: Widget {
-    let kind: String = "DropsWidget"
+struct ThrowWidget: Widget {
+    let kind: String = "ThrowWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: DropsWidgetProvider()) { entry in
-            DropsWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: ThrowWidgetProvider()) { entry in
+            ThrowWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("Drops")
+        .configurationDisplayName("Throw")
         .description("빠르게 음성 메모를 시작하세요")
         .supportedFamilies([.systemSmall, .accessoryCircular])
     }
 }
 
 #Preview(as: .systemSmall) {
-    DropsWidget()
+    ThrowWidget()
 } timeline: {
-    DropsWidgetEntry(date: .now)
+    ThrowWidgetEntry(date: .now)
 }
 
 #Preview(as: .accessoryCircular) {
-    DropsWidget()
+    ThrowWidget()
 } timeline: {
-    DropsWidgetEntry(date: .now)
+    ThrowWidgetEntry(date: .now)
 }

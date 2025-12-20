@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
-               BuildableName = "Drops.app"
-               BlueprintName = "Drops"
-               ReferencedContainer = "container:Drops.xcodeproj">
+               BlueprintIdentifier = "603539DABD5A58527B01CCEE"
+               BuildableName = "Throw.app"
+               BlueprintName = "Throw"
+               ReferencedContainer = "container:Throw.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,10 +29,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BE075BB899ED364CC2AAA00"
-               BuildableName = "DropsWidget.appex"
-               BlueprintName = "DropsWidget"
-               ReferencedContainer = "container:Drops.xcodeproj">
+               BlueprintIdentifier = "81FA97EA2439315F25C3050D"
+               BuildableName = "ThrowWidget.appex"
+               BlueprintName = "ThrowWidget"
+               ReferencedContainer = "container:Throw.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,10 +46,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
-            BuildableName = "Drops.app"
-            BlueprintName = "Drops"
-            ReferencedContainer = "container:Drops.xcodeproj">
+            BlueprintIdentifier = "603539DABD5A58527B01CCEE"
+            BuildableName = "Throw.app"
+            BlueprintName = "Throw"
+            ReferencedContainer = "container:Throw.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -71,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
-            BuildableName = "Drops.app"
-            BlueprintName = "Drops"
-            ReferencedContainer = "container:Drops.xcodeproj">
+            BlueprintIdentifier = "603539DABD5A58527B01CCEE"
+            BuildableName = "Throw.app"
+            BlueprintName = "Throw"
+            ReferencedContainer = "container:Throw.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -90,10 +90,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5CAEB3A8C326CF7343209C2B"
-            BuildableName = "Drops.app"
-            BlueprintName = "Drops"
-            ReferencedContainer = "container:Drops.xcodeproj">
+            BlueprintIdentifier = "603539DABD5A58527B01CCEE"
+            BuildableName = "Throw.app"
+            BlueprintName = "Throw"
+            ReferencedContainer = "container:Throw.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
