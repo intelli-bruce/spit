@@ -29,7 +29,7 @@ Pods/
 Package.resolved
 
 # Secrets - API keys
-Spit/App/Secrets.swift
+**/Secrets.swift
 
 # macOS
 .DS_Store
