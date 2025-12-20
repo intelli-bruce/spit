@@ -2,9 +2,23 @@ import Foundation
 import IOKit
 
 enum Config {
+    // MARK: - Environment
+    #if DEBUG
+    static let useLocalSupabase = true
+    #else
+    static let useLocalSupabase = false
+    #endif
+
     // MARK: - Supabase Configuration
-    static let supabaseURL = "https://nouigqxpieylsqhggcmt.supabase.co"
-    static let supabaseAnonKey = "sb_publishable_BYEyKDUO7XfwaHO01tfF2Q_IeXKHAJk"
+    static var supabaseURL: String {
+        useLocalSupabase ? "http://127.0.0.1:56321" : "https://nouigqxpieylsqhggcmt.supabase.co"
+    }
+
+    static var supabaseAnonKey: String {
+        useLocalSupabase
+            ? "sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH"
+            : "sb_publishable_BYEyKDUO7XfwaHO01tfF2Q_IeXKHAJk"
+    }
 
     // MARK: - Sync Settings
     static let autoSyncInterval: TimeInterval = 30 // seconds

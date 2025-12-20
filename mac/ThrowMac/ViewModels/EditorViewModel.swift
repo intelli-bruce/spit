@@ -233,12 +233,10 @@ class EditorViewModel {
             }
 
             // Upload pending local changes
-            let pendingStatus = SyncStatus.pending
-            let pendingDescriptor = FetchDescriptor<Note>(
-                predicate: #Predicate { $0.syncStatus == pendingStatus }
-            )
-
-            if let pendingNotes = try? context.fetch(pendingDescriptor) {
+            let allDescriptor = FetchDescriptor<Note>()
+            if let allNotes = try? context.fetch(allDescriptor) {
+                let pendingNotes = allNotes.filter { $0.syncStatus == .pending }
+                print("[DEBUG] Found \(pendingNotes.count) pending notes to sync")
                 for note in pendingNotes {
                     await syncNote(note, context: context)
                 }
@@ -262,19 +260,23 @@ class EditorViewModel {
 
     private func syncNote(_ note: Note, context: ModelContext) async {
         do {
+            print("[DEBUG] Syncing note: \(note.id)")
             // Create or update note
             _ = try await supabase.createNote(note: note)
             note.syncStatus = .synced
+            print("[DEBUG] Note synced successfully: \(note.id)")
 
             // Sync blocks
-            for block in note.blocks where block.syncStatus == .pending {
+            let pendingBlocks = note.blocks.filter { $0.syncStatus == .pending }
+            print("[DEBUG] Syncing \(pendingBlocks.count) pending blocks")
+            for block in pendingBlocks {
                 _ = try await supabase.createBlock(block: block, noteId: note.id)
                 block.syncStatus = .synced
             }
 
             try? context.save()
         } catch {
-            print("Note sync failed: \(error)")
+            print("[ERROR] Note sync failed: \(error)")
         }
     }
 

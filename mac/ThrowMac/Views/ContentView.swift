@@ -6,6 +6,7 @@ struct ContentView: View {
     @State private var viewModel = EditorViewModel()
     @State private var selectedNoteId: UUID?
     @State private var isEditing = false
+    @FocusState private var isFeedFocused: Bool
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -39,10 +40,22 @@ struct ContentView: View {
         .frame(minWidth: 600, minHeight: 400)
         .background(Color(nsColor: .windowBackgroundColor))
         .focusable()
+        .focused($isFeedFocused)
         .onKeyPress { keyPress in
             // j/k only work when not editing
             if isEditing { return .ignored }
             return handleKeyPress(keyPress)
+        }
+        .onAppear {
+            isFeedFocused = true
+        }
+        .onChange(of: isEditing) { _, newValue in
+            if !newValue {
+                // Return focus to feed when exiting edit mode
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    isFeedFocused = true
+                }
+            }
         }
         .task {
             await viewModel.loadNotes(context: modelContext)
@@ -141,39 +154,30 @@ struct NoteFeedCard: View {
     var isFocused: Bool
     @Binding var isEditing: Bool
 
-    @State private var vimEngine = VimEngine()
-    @State private var editingContent: String = ""
-
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             if isEditing && isFocused {
-                // Vim Editor
-                VimEditorView(
-                    text: $editingContent,
-                    vimEngine: vimEngine,
-                    onSave: saveNote,
-                    onEscape: exitEditing
+                // Block Editor
+                BlockEditorView(
+                    note: note,
+                    isEditing: $isEditing,
+                    onSave: saveNote
                 )
-                .frame(minHeight: 150)
-
-                // Vim mode indicator
-                HStack {
-                    Text(vimEngine.mode.rawValue)
-                        .font(.caption.monospaced())
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(modeColor.opacity(0.2), in: RoundedRectangle(cornerRadius: 4))
-                        .foregroundStyle(modeColor)
-
-                    Spacer()
-                }
+                .frame(minHeight: 100)
             } else {
-                // Display mode
-                Text(note.preview.isEmpty ? "빈 노트" : note.preview)
-                    .font(.body)
-                    .foregroundStyle(note.preview.isEmpty ? .secondary : .primary)
-                    .lineLimit(nil)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                // Display mode - show all blocks
+                VStack(alignment: .leading, spacing: 4) {
+                    ForEach(note.rootBlocks.sorted { $0.position < $1.position }) { block in
+                        BlockPreviewRow(block: block)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                if note.rootBlocks.isEmpty {
+                    Text("빈 노트")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             // Metadata
@@ -205,6 +209,11 @@ struct NoteFeedCard: View {
 
                 Spacer()
 
+                // Block count
+                Text("\(note.rootBlocks.count) blocks")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+
                 // Sync status
                 Circle()
                     .fill(note.syncStatus == .pending ? .orange : .green)
@@ -221,20 +230,6 @@ struct NoteFeedCard: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(isFocused ? Color.accentColor : Color.clear, lineWidth: 2)
         )
-        .onAppear {
-            if let block = note.rootBlocks.first(where: { $0.type == .text }) {
-                editingContent = block.content ?? ""
-            }
-        }
-        .onChange(of: editingContent) { _, newValue in
-            if let block = note.rootBlocks.first(where: { $0.type == .text }) {
-                block.content = newValue
-                block.updatedAt = Date()
-                block.syncStatus = .pending
-                note.updatedAt = Date()
-                note.syncStatus = .pending
-            }
-        }
     }
 
     private func saveNote() {
@@ -243,19 +238,48 @@ struct NoteFeedCard: View {
             await viewModel.syncWithSupabase(context: modelContext)
         }
     }
+}
 
-    private func exitEditing() {
-        saveNote()
-        isEditing = false
-    }
+// MARK: - Block Preview Row (for display mode)
 
-    private var modeColor: Color {
-        switch vimEngine.mode {
-        case .normal: return .blue
-        case .insert: return .green
-        case .visual, .visualLine: return .purple
-        case .command: return .orange
-        case .operatorPending: return .yellow
+struct BlockPreviewRow: View {
+    let block: NoteBlock
+
+    var body: some View {
+        Group {
+            switch block.type {
+            case .text:
+                if let content = block.content, !content.isEmpty {
+                    Text(content)
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                        .lineLimit(nil)
+                }
+            case .image:
+                HStack(spacing: 4) {
+                    Image(systemName: "photo")
+                        .font(.caption)
+                    Text("Image")
+                        .font(.caption)
+                }
+                .foregroundStyle(.secondary)
+            case .audio:
+                HStack(spacing: 4) {
+                    Image(systemName: "waveform")
+                        .font(.caption)
+                    Text("Audio")
+                        .font(.caption)
+                }
+                .foregroundStyle(.secondary)
+            case .video:
+                HStack(spacing: 4) {
+                    Image(systemName: "video")
+                        .font(.caption)
+                    Text("Video")
+                        .font(.caption)
+                }
+                .foregroundStyle(.secondary)
+            }
         }
     }
 }

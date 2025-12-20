@@ -18,7 +18,7 @@ actor SupabaseService {
     func createNote(note: Note) async throws -> NoteDTO {
         let dto = NoteDTO(from: note)
         let response: NoteDTO = try await client.from("notes")
-            .insert(dto)
+            .upsert(dto)
             .select()
             .single()
             .execute()
@@ -78,7 +78,7 @@ actor SupabaseService {
     func createBlock(block: NoteBlock, noteId: UUID) async throws -> NoteBlockDTO {
         let dto = NoteBlockDTO(from: block, noteId: noteId)
         let response: NoteBlockDTO = try await client.from("note_blocks")
-            .insert(dto)
+            .upsert(dto)
             .select()
             .single()
             .execute()
