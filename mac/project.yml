@@ -1,4 +1,4 @@
-name: DropsMac
+name: ThrowMac
 
 options:
   bundleIdPrefix: com.intellieffect
@@ -20,23 +20,23 @@ packages:
     from: "2.0.0"
 
 targets:
-  DropsMac:
+  ThrowMac:
     type: application
     platform: macOS
     sources:
-      - DropsMac
+      - ThrowMac
     dependencies:
       - package: Supabase
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.drops.mac
-        PRODUCT_NAME: Drops
+        PRODUCT_BUNDLE_IDENTIFIER: com.intellieffect.throw.mac
+        PRODUCT_NAME: Throw
         GENERATE_INFOPLIST_FILE: true
-        INFOPLIST_KEY_CFBundleDisplayName: "Drops"
+        INFOPLIST_KEY_CFBundleDisplayName: "Throw"
         INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © 2025 IntelliEffect. All rights reserved."
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.productivity"
     entitlements:
-      path: DropsMac/App/DropsMac.entitlements
+      path: ThrowMac/App/ThrowMac.entitlements
       properties:
         com.apple.security.app-sandbox: false
         com.apple.security.network.client: true
